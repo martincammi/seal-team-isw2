@@ -2,6 +2,7 @@ package com.correportuvida.activities;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
@@ -13,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
+import com.correportuvida.DetallePlanActivity;
 import com.correportuvida.R;
 
 public class TrainingActivity extends Activity {
@@ -35,6 +37,7 @@ public class TrainingActivity extends Activity {
         OnItemClickListener mMessageClickedHandler = new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             	//To Plan Details Activity  
+            	goToDetallePlanActivity(view);
             }
         };
 
@@ -74,5 +77,12 @@ public class TrainingActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	 public void goToDetallePlanActivity(View view) {
+
+		Intent intent = new Intent(this, DetallePlanActivity.class);
+    	startActivity(intent);
+	 }
+	    
 
 }
