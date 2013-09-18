@@ -14,7 +14,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 
-import com.correportuvida.DetallePlanActivity;
 import com.correportuvida.R;
 
 public class TrainingActivity extends Activity {

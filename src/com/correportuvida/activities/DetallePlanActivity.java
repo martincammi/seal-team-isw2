@@ -1,4 +1,8 @@
-package com.correportuvida;
+package com.correportuvida.activities;
+
+import com.correportuvida.R;
+import com.correportuvida.R.layout;
+import com.correportuvida.R.menu;
 
 import android.os.Bundle;
 import android.app.Activity;
