@@ -8,5 +8,19 @@
     <string name="dummy_content">List Of plans</string>
     <string name="title_activity_training">TrainingActivity</string>
     <string name="hello_world">Hello world!</string>
+    
+    <!-- DetallePlanActivity -->
+    <string name="title_activity_detalle_plan">DetallePlanActivity</string>
+    <string name="label_fase">Fase</string>
+    <string name="value_fase">1</string>
+    <string name="title_training">Entrenamiento recreativo</string>
+    <string name="label_distancia_recorrida">Distancia Recorrida</string>
+    <string name="value_distancia_recorrida">1.2 Km</string>
+    <string name="label_velocidad_alcanzar">Velocidad a alcanzar</string>
+    <string name="value_velocidad_alcanzar">5 Km/h</string>
+    <string name="label_cambio_velocidad">Cambio de velocidad</string>
+    <string name="value_cambio_velocidad">OK</string>
+    
+    
 
 </resources>
