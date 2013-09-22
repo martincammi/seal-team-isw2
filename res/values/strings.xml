@@ -8,7 +8,7 @@
     <string name="dummy_content">List Of plans</string>
     <string name="title_activity_training">TrainingActivity</string>
     <string name="hello_world">Hello world!</string>
-    
+
     <!-- DetallePlanActivity -->
     <string name="title_activity_detalle_plan">DetallePlanActivity</string>
     <string name="label_fase">Fase</string>
@@ -20,7 +20,7 @@
     <string name="value_velocidad_alcanzar">5 Km/h</string>
     <string name="label_cambio_velocidad">Cambio de velocidad</string>
     <string name="value_cambio_velocidad">OK</string>
+    <string name="title_activity_running">RunningActivity</string>
+	<string name="button_start">Comenzar Entrenamiento</string>
     
-    
-
 </resources>
