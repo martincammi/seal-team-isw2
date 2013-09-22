@@ -1,12 +1,13 @@
 package com.correportuvida.activities;
 
-import com.correportuvida.R;
-import com.correportuvida.R.layout;
-import com.correportuvida.R.menu;
-
-import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
+
+import com.correportuvida.R;
 
 public class DetallePlanActivity extends Activity {
 
@@ -14,7 +15,22 @@ public class DetallePlanActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detalle_plan);
+		
+		Button buttonStart = (Button) findViewById(R.id.button_start);
+		
+		buttonStart.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+            	goToRunningActivity(v);
+            }
+        });
 	}
+	
+	 public void goToRunningActivity(View view) {
+    	Intent intent = new Intent(this, RunningActivity.class);
+    	//intent.putExtra(EXTRA_MESSAGE, view.getId());
+    	startActivity(intent);
+	    	
+    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

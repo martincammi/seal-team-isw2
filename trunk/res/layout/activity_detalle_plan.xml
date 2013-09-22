@@ -136,4 +136,28 @@
 		
 	</LinearLayout>
 	
+	<LinearLayout  
+            android:id="@+id/fullscreen_content_controls6"
+            style="?buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="68dp"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent" >
+        	
+		
+	<Button 
+			android:id="@+id/button_start"
+			android:layout_width="0dip"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:height="7dp"
+		    android:text="@string/button_start"
+		    android:gravity="center_horizontal"
+			/>
+		
+	</LinearLayout>
+	
 </FrameLayout>
