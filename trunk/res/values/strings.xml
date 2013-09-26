@@ -21,6 +21,15 @@
     <string name="label_cambio_velocidad">Cambio de velocidad</string>
     <string name="value_cambio_velocidad">OK</string>
     <string name="title_activity_running">RunningActivity</string>
+	
+    <!-- RunningActivity -->
+    <string name="button_cancel">Parar</string>
+    
+	<!-- TrainingDetailActivity -->
+	<string name="label_nombre_plan">Plan</string>
+	<string name="label_nombre_entrenamiento">Entrenamiento</string>
 	<string name="button_start">Comenzar Entrenamiento</string>
+	
+	
     
 </resources>

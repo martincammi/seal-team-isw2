@@ -7,14 +7,37 @@
     <uses-sdk
         android:minSdkVersion="7"
         android:targetSdkVersion="17" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
+    
+	<permission
+    android:name="com.correportuvida.permission.MAPS_RECEIVE"
+    android:protectionLevel="signature" />
+	
+	<uses-permission android:name="com.correportuvida.permission.MAPS_RECEIVE" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+	<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    
+    <!-- GPS Location -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    
+	
+	<uses-feature android:glEsVersion="0x00020000"
+              android:required="true"/>
+	
+	<uses-permission android:name="android.permission.INTERNET" />
+	
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher_n"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
+        <meta-data android:name="com.google.android.maps.v2.API_KEY"
+               	   android:value="AIzaSyDHfYjCb1PeAyUDcZDQmJReAITbmErC0Fk"/>
+        
         <activity
             android:name="com.correportuvida.activities.PlansListActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -27,7 +50,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.correportuvida.activities.TrainingActivity"
+            android:name="com.correportuvida.activities.TrainingListActivity"
             android:label="@string/title_activity_training"
             android:parentActivityName="com.correportuvida.activities.PlansListActivity" >
             <meta-data
@@ -35,7 +58,7 @@
                 android:value="com.correportuvida.activities.PlansListActivity" />
         </activity>
         <activity
-            android:name="com.correportuvida.activities.DetallePlanActivity"
+            android:name="com.correportuvida.activities.RunningActivity"
             android:label="@string/title_activity_detalle_plan"
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
@@ -43,7 +66,7 @@
         <uses-library android:name="com.google.android.maps" />
 
         <activity
-            android:name="com.correportuvida.activities.RunningActivity"
+            android:name="com.correportuvida.activities.TrainingDetailActivity"
             android:label="@string/title_activity_running" >
         </activity>
     </application>

@@ -16,12 +16,12 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import com.correportuvida.R;
 
-public class TrainingActivity extends Activity {
+public class TrainingListActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_training);
+		setContentView(R.layout.activity_trainings_list);
 		// Show the Up button in the action bar.
 		setupActionBar();
 		
@@ -79,7 +79,7 @@ public class TrainingActivity extends Activity {
 	
 	 public void goToDetallePlanActivity(View view) {
 
-		Intent intent = new Intent(this, DetallePlanActivity.class);
+		Intent intent = new Intent(this, TrainingDetailActivity.class);
     	startActivity(intent);
 	 }
 	    
