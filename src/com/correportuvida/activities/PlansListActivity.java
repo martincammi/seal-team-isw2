@@ -42,7 +42,7 @@ public class PlansListActivity extends ActionBarActivity {
     
     public void goToTrainingActivity(View view) {
      
-    	Intent intent = new Intent(this, TrainingActivity.class);
+    	Intent intent = new Intent(this, TrainingListActivity.class);
     	intent.putExtra(EXTRA_MESSAGE, view.getId());
     	startActivity(intent);
     	

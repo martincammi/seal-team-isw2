@@ -1,9 +1,182 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.google.android.maps.MapView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/mapview"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:clickable="true"
-    android:apiKey="API_KEY"
-/>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ff6600"
+    tools:context=".PlansListActivity" >
+
+		<LinearLayout  
+            android:id="@+id/fullscreen_content_controls"
+            style="?buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent" >
+        	
+		    <TextView android:id="@+id/labelEntretainmentName"
+			    	  android:layout_width="0dip"
+			    	  android:layout_height="wrap_content"
+	    			  android:layout_weight="1"
+	    			  android:text="@string/title_training"
+	    			  android:gravity="center_horizontal"/>
+        </LinearLayout>
+	    
+		<LinearLayout  
+            android:id="@+id/fullscreen_content_controls2"
+            style="?buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="17dp"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent" >
+        	
+		
+		    <TextView android:id="@+id/labelFase"
+			    	  android:layout_width="0dip"
+			    	  android:layout_height="wrap_content"
+	    			  android:layout_weight="1"
+	    			  android:text="@string/label_fase"
+	    			  android:gravity="center_horizontal"/>
+	    			 
+			<TextView android:id="@+id/valueFase"
+				      android:layout_width="0dip"
+				      android:layout_height="wrap_content"
+				      android:layout_weight="1"
+				      android:text="@string/value_fase"
+				      android:gravity="center_horizontal"/>
+		
+		</LinearLayout>
+	
+		<LinearLayout  
+            android:id="@+id/fullscreen_content_controls3"
+            style="?buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="34dp"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent" >
+        	
+		
+	    <TextView android:id="@+id/labelDistancia"
+		    	  android:layout_width="0dip"
+		    	  android:layout_height="wrap_content"
+    			  android:layout_weight="1"
+    			  android:text="@string/label_distancia_recorrida"
+    			  android:gravity="center_horizontal"/>
+    			 
+		<TextView android:id="@+id/valueDistancia"
+			      android:layout_width="0dip"
+			      android:layout_height="wrap_content"
+			      android:layout_weight="1"
+			      android:text="@string/value_distancia_recorrida"
+			      android:gravity="center_horizontal"/>
+		
+	</LinearLayout>
+	
+	<LinearLayout  
+            android:id="@+id/fullscreen_content_controls4"
+            style="?buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="51dp"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent" >
+        	
+		
+	    <TextView android:id="@+id/labelCambioVelocidad"
+		    	  android:layout_width="0dip"
+		    	  android:layout_height="wrap_content"
+    			  android:layout_weight="1"
+    			  android:text="@string/label_cambio_velocidad"
+    			  android:gravity="center_horizontal"/>
+    			 
+		<TextView android:id="@+id/valueCambioVelocidad"
+			      android:layout_width="0dip"
+			      android:layout_height="wrap_content"
+			      android:layout_weight="1"
+			      android:text="@string/value_cambio_velocidad"
+			      android:gravity="center_horizontal"/>
+		
+	</LinearLayout>
+	
+	<LinearLayout  
+            android:id="@+id/fullscreen_content_controls5"
+            style="?buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="68dp"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent" >
+        	
+		
+	    <TextView android:id="@+id/labelVelocidadAlcanzar"
+		    	  android:layout_width="0dip"
+		    	  android:layout_height="wrap_content"
+    			  android:layout_weight="1"
+    			  android:text="@string/label_velocidad_alcanzar"
+    			  android:gravity="center_horizontal"/>
+    			 
+		<TextView android:id="@+id/valueVelocidadAlcanzar"
+			      android:layout_width="0dip"
+			      android:layout_height="wrap_content"
+			      android:layout_weight="1"
+			      android:text="@string/value_velocidad_alcanzar"
+			      android:gravity="center_horizontal"/>
+		
+	</LinearLayout>
+	
+	<LinearLayout  
+            android:id="@+id/fullscreen_content_controls6"
+            style="?buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="85dp"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent" >
+		
+	    <Button 
+				android:id="@+id/button_cancel"
+				android:layout_width="0dip"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:height="5dp"
+			    android:text="@string/button_cancel"
+			    android:gravity="center_horizontal"	/>
+        	
+	</LinearLayout>
+	
+	<LinearLayout  
+            android:id="@+id/fullscreen_content_controls7"
+            style="?buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="120dp"
+            android:background="@color/black_overlay"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent" >
+	
+			<fragment 
+		        android:id="@+id/map"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        class="com.google.android.gms.maps.SupportMapFragment"/>
+		    	
+	</LinearLayout>
+	
+
+	
+</FrameLayout>

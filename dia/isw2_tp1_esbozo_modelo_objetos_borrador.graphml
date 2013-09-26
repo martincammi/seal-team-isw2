@@ -20,7 +20,7 @@
           <y:Geometry height="71.58151815181503" width="91.0510891089109" x="1293.8635726910022" y="373.58527206146175"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="80.048828125" x="5.501130491955337" y="4.0">PerfilUsuario</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="80.048828125" x="5.501130491955564" y="4.0">PerfilUsuario</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="31.9375" modelName="custom" textColor="#000000" visible="true" width="56.79296875" x="2.0" y="29.96875">- altura()
 - peso()<y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
@@ -143,7 +143,7 @@ Lista Fases)
           <y:Geometry height="132.69715009900983" width="242.49324039603954" x="1222.7895377498476" y="-224.58464950495022"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="31.890625" x="105.30130769801974" y="4.0">Fase</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="31.890625" x="105.30130769801985" y="4.0">Fase</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="101.78125" modelName="custom" textColor="#000000" visible="true" width="225.47265625" x="2.0" y="29.96875">- Fase(duración, 
 velocidadMáxima, velocidadMínima, 
 número)
@@ -250,12 +250,12 @@ es parte de la realidad ???<y:LabelModel>
     <node id="n10">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="90.0" width="231.27597650331063" x="1610.9414189703468" y="40.68994168234383"/>
+          <y:Geometry height="90.0" width="281.36250077515524" x="1610.9414189703468" y="40.68994168234383"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="54.26171875" x="88.50712887665532" y="4.0">Objetivo</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="59.875" modelName="custom" textColor="#000000" visible="true" width="256.3515625" x="2.0" y="29.96875">- Objetivo(unaDistancia)
-- Objetivo(unaDistancia, unaHora)
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="54.26171875" x="113.55039101257762" y="4.0">Objetivo</y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="59.875" modelName="custom" textColor="#000000" visible="true" width="264.244140625" x="2.0" y="29.96875">- Objetivo(unaDistancia)
+- Objetivo(unaDistancia, PeríodoDeTiempo)
 - getDistanciaObjetivo(): Distancia
 - getTiempoEsperado(): PeriodoDeTiempo<y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
@@ -324,7 +324,7 @@ nombrePlan, nombreEntrenamiento)
           <y:Geometry height="71.58151815181503" width="91.0510891089109" x="1487.5897297867118" y="354.1366366159248"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="32.212890625" x="29.419099241955564" y="4.0">Peso</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="32.212890625" x="29.419099241955337" y="4.0">Peso</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="75.09765625" x="2.0" y="29.96875">- getValue()
 <y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
@@ -345,7 +345,7 @@ nombrePlan, nombreEntrenamiento)
           <y:Geometry height="71.58151815181503" width="91.0510891089109" x="1487.589729786712" y="438.36792608787925"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="40.140625" x="25.455232054455337" y="4.0">Altura</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="40.140625" x="25.455232054455564" y="4.0">Altura</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="75.09765625" x="2.0" y="29.96875">- getValue()
 <y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
@@ -387,7 +387,7 @@ nombrePlan, nombreEntrenamiento)
           <y:Geometry height="60.78572762936669" width="136.77687527243302" x="2127.96572522852" y="225.09121957013235"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="122.03125" x="7.372812636216395" y="4.0">FrecuenciaSemanal</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="122.03125" x="7.372812636216622" y="4.0">FrecuenciaSemanal</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="75.09765625" x="2.0" y="29.96875">- getValue()
 <y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
@@ -450,7 +450,7 @@ nombrePlan, nombreEntrenamiento)
           <y:Geometry height="132.69715009900983" width="330.20970878219885" x="422.59100532619215" y="670.3537888448843"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="130.421875" x="99.89391689109948" y="4.0">NivelDeActualizacion</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="130.421875" x="99.89391689109942" y="4.0">NivelDeActualizacion</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="87.8125" modelName="custom" textColor="#000000" visible="true" width="324.37890625" x="2.0" y="29.96875">- NivelDeActualizacion(ModoAviso, Tiempo)
 - getTiempoParaCambioDeDatos(): PeriodoDeTiempo
 - getModoAvisoParaCambioDeFase(): SeñalDeAviso
@@ -475,7 +475,7 @@ nombrePlan, nombreEntrenamiento)
           <y:Geometry height="90.0" width="252.28511530398328" x="597.4625840546321" y="849.9058188243356"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="48.6953125" x="101.79490140199186" y="4.0">Tiempo</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="48.6953125" x="101.79490140199164" y="4.0">Tiempo</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="210.015625" x="2.0" y="29.96875">- getTiempoParaCambioDeDatos()
 <y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
@@ -496,7 +496,7 @@ nombrePlan, nombreEntrenamiento)
           <y:Geometry height="90.0" width="252.28511530398328" x="315.1774687506488" y="849.9058188243356"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="68.892578125" x="91.69626858949141" y="4.0">ModoAviso</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="68.892578125" x="91.69626858949164" y="4.0">ModoAviso</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" textColor="#000000" visible="true" width="223.2109375" x="2.0" y="29.96875">- getModoAvisoParaCambioDeFase()
 <y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
@@ -587,7 +587,7 @@ unaDisponibilidad, unEstadoActual)
           <y:Geometry height="90.0" width="171.66092592867017" x="2036.8000992078044" y="426.3798833646876"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="40.029296875" x="65.81581452683486" y="4.0">Medio</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="17.96875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="40.029296875" x="65.81581452683508" y="4.0">Medio</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="31.9375" modelName="custom" textColor="#000000" visible="true" width="143.58203125" x="2.0" y="29.96875">- getNombre(): nombre
 - getValor():<y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
@@ -866,10 +866,10 @@ unaDisponibilidad, unEstadoActual)
     <edge id="e7" source="n10" target="n23">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-69.48017860294294" sy="-0.8299831881289492" tx="13.884189121833824" ty="6.389103386122908"/>
+          <y:Path sx="-84.52722631028911" sy="-0.8299831881289492" tx="13.884189121833824" ty="6.389103386122908"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="standard" target="none"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="65.4296875" x="-85.72146387380963" y="23.800339222072722">&lt;&lt;usa&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="65.4296875" x="-85.72036524099713" y="23.391777455102783">&lt;&lt;usa&gt;&gt;<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -994,7 +994,7 @@ unaDisponibilidad, unEstadoActual)
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="65.4296875" x="4.545232838057245" y="1.0080995938180024">&lt;&lt;usa&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="65.4296875" x="4.502162579691458" y="0.8544085272323656">&lt;&lt;usa&gt;&gt;<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1043,7 +1043,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e16" source="n1" target="n8">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-62.65492671567267" sy="64.6823638414615" tx="81.70291655799062" ty="23.402423723150264"/>
@@ -1062,7 +1061,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e17" source="n19" target="n21">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1073,7 +1071,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e18" source="n19" target="n20">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1084,7 +1081,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e19" source="n1" target="n19">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1103,7 +1099,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e20" source="n2" target="n19">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-55.84063202531871" sy="1.052232051560277" tx="0.0" ty="0.0"/>
@@ -1122,7 +1117,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e21" source="n2" target="n22">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1149,7 +1143,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e22" source="n22" target="n12">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1176,7 +1169,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e23" source="n1" target="n4">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="-76.89831166122019" sy="-2.9358502551637002" tx="0.0" ty="0.0">
@@ -1197,7 +1189,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e24" source="n23" target="n4">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="10.844159154555506" sy="-34.50147184577817" tx="0.0" ty="0.0"/>
@@ -1216,7 +1207,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e25" source="n23" target="n5">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="30.81235274114636" sy="-25.65531835121658" tx="0.0" ty="0.0"/>
@@ -1235,7 +1225,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e26" source="n2" target="n23">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1262,7 +1251,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e27" source="n23" target="n3">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1281,7 +1269,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e28" source="n27" target="n24">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1292,7 +1279,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e29" source="n26" target="n24">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1303,7 +1289,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e30" source="n25" target="n24">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1314,7 +1299,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e31" source="n23" target="n24">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="-77.18216402024268" ty="30.7472172820477"/>
@@ -1333,13 +1317,12 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e32" source="n10" target="n17">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="65.4296875" x="123.87518230231808" y="-1.2556325117217284">&lt;&lt;usa&gt;&gt;<y:LabelModel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="17.96875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="65.4296875" x="95.55751327078224" y="-3.5385034826824437">&lt;&lt;usa&gt;&gt;<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -1352,7 +1335,6 @@ unaDisponibilidad, unEstadoActual)
       </data>
     </edge>
     <edge id="e33" source="n19" target="n28">
-      <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
