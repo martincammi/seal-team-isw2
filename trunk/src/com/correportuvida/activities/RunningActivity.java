@@ -1,9 +1,16 @@
 package com.correportuvida.activities;
 
+import java.util.ArrayList;
+
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.location.Criteria;
+import android.location.LocationListener;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -23,18 +30,19 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class RunningActivity extends FragmentActivity /*implements GooglePlayServicesClient.ConnectionCallbacks, GooglePlayServicesClient.OnConnectionFailedListener*/ {
+public class RunningActivity extends FragmentActivity /*implements GooglePlayServicesClient.ConnectionCallbacks, GooglePlayServicesClient.OnConnectionFailedListener*/ implements LocationListener  {
 	static final LatLng HAMBURG = new LatLng(53.558, 9.927);
 	static final LatLng KIEL = new LatLng(53.551, 9.993);
 	static final LatLng CIUDAD_UNIVERSITARIA = new LatLng(-34.541672, -58.442189);
-    private LocationRequest mLocationRequest = null;
 	private GoogleMap map;
-	private LocationClient mLocationClient; 
+	private Marker currentPosition;
 	Context context;
 	
 //    private static final int MILLISECONDS_PER_SECOND = 1000;
@@ -87,7 +95,25 @@ public class RunningActivity extends FragmentActivity /*implements GooglePlaySer
 
         
 //		 Location mCurrentLocation = mLocationClient.getLastLocation();
-		 
+        if(servicesConnected()){
+        
+            map.setMyLocationEnabled(true);
+ 
+            LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+ 
+            Criteria criteria = new Criteria();
+
+            String provider = locationManager.getBestProvider(criteria, true);
+
+            Location location = locationManager.getLastKnownLocation(provider);
+ 
+            if(location!=null){
+                onLocationChanged(location);
+            }
+            
+            locationManager.requestLocationUpdates(provider, 20000, 0, this);
+        }
+/*		 
         if (map!=null){
 		      
 			 Marker hamburg = map.addMarker(new MarkerOptions().position(HAMBURG).title("Hamburg"));
@@ -113,7 +139,7 @@ public class RunningActivity extends FragmentActivity /*implements GooglePlaySer
 		 
 		 map.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null); 
 		 
-		 
+	*/	 
 	}
 	
 	  /**
@@ -151,6 +177,87 @@ public class RunningActivity extends FragmentActivity /*implements GooglePlaySer
 		return true;
 	}
 	
+    @Override
+    public void onLocationChanged(Location location) {
+    	
+    	ArrayList<LatLng> positions = new ArrayList<LatLng>();
+    	if (currentPosition != null) {
+    		positions.add(currentPosition.getPosition());
+    		currentPosition.remove();
+    	}
+
+        double latitude = location.getLatitude();
+        double longitude = location.getLongitude();
+ 
+        LatLng coordinates = new LatLng(latitude, longitude);
+        
+        positions.add(coordinates);
+        
+        Marker posicionActual = map.addMarker(new MarkerOptions()
+        .position(coordinates)
+        .title("Posicion actual")
+        .snippet("Exactas is cool")
+        .icon(BitmapDescriptorFactory
+            .fromResource(R.drawable.ic_launcher)));
+        
+        currentPosition = posicionActual;
+        
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+        .target(coordinates)      // Sets the center of the map to Mountain View
+        .zoom(17)                   // Sets the zoom
+        .build();                   // Creates a CameraPosition from the builder
+        map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+		if (positions.size() > 1){
+			drawPrimaryLinePath(positions);
+		} /*else {
+			map.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
+		}*/
+ 
+    }
+	
+    @Override
+    public void onProviderDisabled(String provider) {
+    	Toast.makeText( getApplicationContext(), "Gps Disabled", Toast.LENGTH_SHORT ).show();
+    }
+ 
+    @Override
+    public void onProviderEnabled(String provider) {
+    	Toast.makeText( getApplicationContext(), "Gps Enabled", Toast.LENGTH_SHORT ).show();
+    }
+ 
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+        // TODO Auto-generated method stub
+    }
+    
+    private void drawPrimaryLinePath( ArrayList<LatLng> locationsToDraw )
+    {
+        if ( map == null )
+        {
+            return;
+        }
+
+        if ( locationsToDraw.size() < 2 )
+        {
+            return;
+        }
+
+        PolylineOptions options = new PolylineOptions();
+
+        options.color( Color.parseColor( "#CC0000FF" ) );
+        options.width( 5 );
+        options.visible( true );
+
+        for ( LatLng locRecorded : locationsToDraw )
+        {
+            options.add(locRecorded);
+        }
+
+        map.addPolyline( options );
+
+    }
+    
 //	@Override
 //	protected void onStart() {
 //		 super.onStart();
