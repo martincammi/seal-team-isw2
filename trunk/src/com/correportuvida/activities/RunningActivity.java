@@ -1,5 +1,6 @@
 package com.correportuvida.activities;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import android.annotation.TargetApi;
@@ -18,6 +19,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.correportuvida.R;
@@ -42,7 +44,9 @@ public class RunningActivity extends FragmentActivity /*implements GooglePlaySer
 	static final LatLng KIEL = new LatLng(53.551, 9.993);
 	static final LatLng CIUDAD_UNIVERSITARIA = new LatLng(-34.541672, -58.442189);
 	private GoogleMap map;
-	private Marker currentPosition;
+	private Marker currentMarker;
+	private Location currentLocation;
+	private float distance = 0;
 	Context context;
 	
 //    private static final int MILLISECONDS_PER_SECOND = 1000;
@@ -67,7 +71,9 @@ public class RunningActivity extends FragmentActivity /*implements GooglePlaySer
 		context = this;
 
 		Button buttonCancel = (Button) findViewById(R.id.button_cancel);
-		
+		TextView valorDistancia = (TextView) findViewById(R.id.valueDistancia);
+		int roundedDistance = (int) Math.round(distance);
+		valorDistancia.setText(Integer.toString(roundedDistance));
 		buttonCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	goToTrainingDetailActivity(v);
@@ -108,6 +114,7 @@ public class RunningActivity extends FragmentActivity /*implements GooglePlaySer
             Location location = locationManager.getLastKnownLocation(provider);
  
             if(location!=null){
+            	currentLocation = location;
                 onLocationChanged(location);
             }
             
@@ -181,38 +188,44 @@ public class RunningActivity extends FragmentActivity /*implements GooglePlaySer
     public void onLocationChanged(Location location) {
     	
     	ArrayList<LatLng> positions = new ArrayList<LatLng>();
-    	if (currentPosition != null) {
-    		positions.add(currentPosition.getPosition());
-    		currentPosition.remove();
+    	if (currentMarker != null) {
+    		positions.add(currentMarker.getPosition());
+    		currentMarker.remove();
     	}
-
+		
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
  
         LatLng coordinates = new LatLng(latitude, longitude);
         
         positions.add(coordinates);
+        if (positions.size() > 1){
+			drawPrimaryLinePath(positions);
+		}
         
-        Marker posicionActual = map.addMarker(new MarkerOptions()
+        Marker markerActual = map.addMarker(new MarkerOptions()
         .position(coordinates)
         .title("Posicion actual")
         .snippet("Exactas is cool")
         .icon(BitmapDescriptorFactory
             .fromResource(R.drawable.ic_launcher)));
         
-        currentPosition = posicionActual;
+        currentMarker = markerActual;
         
         CameraPosition cameraPosition = new CameraPosition.Builder()
-        .target(coordinates)      // Sets the center of the map to Mountain View
-        .zoom(17)                   // Sets the zoom
-        .build();                   // Creates a CameraPosition from the builder
+        .target(coordinates)
+        .zoom(15)                   
+        .build();                   
         map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-		if (positions.size() > 1){
-			drawPrimaryLinePath(positions);
-		} /*else {
-			map.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
-		}*/
+		
+		if (currentLocation != null){
+			distance += location.distanceTo(currentLocation);
+		}
+		currentLocation = location;
+		
+		TextView valorDistancia = (TextView) findViewById(R.id.valueDistancia);
+		valorDistancia.setText(new DecimalFormat("##.##").format(distance/1000) + " Km");
+		
  
     }
 	
