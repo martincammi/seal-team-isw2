@@ -64,14 +64,14 @@
             tools:ignore="UselessParent" >
         	
 		
-	    <TextView android:id="@+id/labelDistancia"
+	    <TextView android:id="@+id/labelDistanceTraveled"
 		    	  android:layout_width="0dip"
 		    	  android:layout_height="wrap_content"
     			  android:layout_weight="1"
     			  android:text="@string/label_distancia_recorrida"
     			  android:gravity="center_horizontal"/>
     			 
-		<TextView android:id="@+id/valueDistancia"
+		<TextView android:id="@+id/valueDistanceTraveled"
 			      android:layout_width="0dip"
 			      android:layout_height="wrap_content"
 			      android:layout_weight="1"
