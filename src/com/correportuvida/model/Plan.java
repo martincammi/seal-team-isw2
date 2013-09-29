@@ -1,5 +1,7 @@
 package com.correportuvida.model;
 
+import com.correportuvida.model.base.Characteristic;
+
 public class Plan {
 
 	private int id;
