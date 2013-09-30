@@ -23,6 +23,11 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+/**
+ * Service to interact with the google maps.
+ * @author martincammi
+ *
+ */
 public class GoogleMapsService {
 	
 	private Context context;
