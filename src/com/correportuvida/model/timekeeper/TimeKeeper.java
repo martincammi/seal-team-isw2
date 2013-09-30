@@ -1,4 +1,4 @@
-package com.correportuvida.model;
+package com.correportuvida.model.timekeeper;
 
 import java.util.Timer;
 import java.util.TimerTask;
