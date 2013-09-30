@@ -4,7 +4,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import android.annotation.TargetApi;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.location.Location;
@@ -20,6 +19,7 @@ import android.widget.Toast;
 
 import com.correportuvida.R;
 import com.correportuvida.services.GoogleMapsService;
+import com.correportuvida.util.HexColor;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -27,49 +27,42 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class RunningActivity extends FragmentActivity /*implements GooglePlayServicesClient.ConnectionCallbacks, GooglePlayServicesClient.OnConnectionFailedListener implements LocationListener*/  {
+public class RunningActivity extends FragmentActivity /*implements LocationListener*/  {
 	
-	static final String BLUE_COLOR = "#CC0000FF";
-	static final LatLng HAMBURG = new LatLng(53.558, 9.927);
-	static final LatLng KIEL = new LatLng(53.551, 9.993);
-	static final LatLng CIUDAD_UNIVERSITARIA = new LatLng(-34.541672, -58.442189);
-	//private GoogleMap googleMap;
 	private Marker currentMarker;
 	private Location currentLocation;
 	private float distance = 0;
-	Context context;
-	GoogleMapsService googleMapService;
-	LocationListener locationListener; 
+	private GoogleMapsService googleMapService;
+	private LocationListener locationListener; 
 	
-    private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
-
-    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_running);
-		googleMapService = new GoogleMapsService(getBaseContext(), this, getSupportFragmentManager(), R.id.map);
-		locationListener = createLocationListener();
-		context = this;
 		
-		addButtonCancelBehaviour();
-		updateDistanceTraveled();
-        //googleMap = googleMapService.getGooleMap();
+		initVariablesAndListeners();
         
         if(googleMapService.servicesConnected()){
         
         	googleMapService.updateCurrentLocation(getLocationListener());
-        	
             Location location = googleMapService.getCurrentLocation();
  
-            if(location!=null){
+            if(location != null){
             	currentLocation = location;
                 getLocationListener().onLocationChanged(location);
             }
-            
-            //locationManager.requestLocationUpdates(provider, 20000, 0, this);
+        }else{
+        	Toast.makeText( getApplicationContext(), "Map not available", Toast.LENGTH_SHORT ).show();
         }
 
+	}
+
+	private void initVariablesAndListeners() {
+		googleMapService = new GoogleMapsService(getBaseContext(), this, getSupportFragmentManager(), R.id.map);
+		locationListener = createLocationListener();
+		
+		addButtonCancelBehaviour();
+		updateDistanceTraveled();
 	}
 
 	private void updateDistanceTraveled() {
@@ -136,19 +129,12 @@ public class RunningActivity extends FragmentActivity /*implements GooglePlaySer
 		        //googleMapService.moveToPositionInGoogleMapWithEffect(currentMarker);
 		        googleMapService.moveToPositionInGoogleMap(currentMarker);
 		        
-//		        if (positions.size() > 1){
-//		        	drawPrimaryLinePath(positions);
-//		        }
-		        
 				if (currentLocation != null){
 					distance += location.distanceTo(currentLocation);
 				}
 				currentLocation = location;
 				
 				updateDistanceTraveled();
-//				TextView valorDistancia = (TextView) findViewById(R.id.valueDistanceTraveled);
-//				valorDistancia.setText(new DecimalFormat("##.##").format(distance/1000) + " Km");
-				
 		 
 		    }
 			
@@ -183,7 +169,7 @@ public class RunningActivity extends FragmentActivity /*implements GooglePlaySer
 
         PolylineOptions options = new PolylineOptions();
 
-        options.color( Color.parseColor(BLUE_COLOR) );
+        options.color( Color.parseColor(HexColor.BLUE) );
         options.width( 5 );
         options.visible( true );
 
@@ -193,6 +179,7 @@ public class RunningActivity extends FragmentActivity /*implements GooglePlaySer
 
         //googleMap.addPolyline( options );
         googleMapService.addPolyLine(options);
+        
 
     }
     
