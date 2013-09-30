@@ -1,4 +1,4 @@
-package com.correportuvida.model;
+package com.correportuvida.model.timekeeper;
 
 import com.correportuvida.model.interfaces.*;
 

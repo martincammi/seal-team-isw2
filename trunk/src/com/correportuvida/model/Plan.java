@@ -1,37 +1,39 @@
 package com.correportuvida.model;
 
-import com.correportuvida.model.base.Characteristic;
+import java.util.List;
+
+import com.correportuvida.model.runner.RunnerProfile;
+import com.correportuvida.model.training.Training;
 
 public class Plan {
 
-	private int id;
-	private String name;
+	//TODO: para que necesitamos esto?
+	private int _id;
+	private String _name;
 
 	/* Essential attributes (cannot be changed once created) */
-	private final Characteristic characteristic; 
+	private final RunnerProfile _profile;
+	private final List<Training> _trainings;
 	
-	public Plan(String name, double height, double weight) {
-		this.name = name;
-		this.characteristic = new Characteristic(height, weight);
+	//TODO: este es el que deberiamos usar
+	public Plan(String name, RunnerProfile profile, List<Training> trainings)
+	{
+		_name = name;
+		_profile = profile;
+		_trainings = trainings;
 	}
 	
-	public void setId(int id){
-		this.id = id;
+	public List<Training> getTrainings()
+	{
+		return _trainings;
 	}
 	
 	public int getId(){
-		return this.id;
+		return this._id;
 	}
 
 	public String getName() {
-		return name;
+		return _name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Characteristic getCharacteristic() {
-		return characteristic;
-	}
 }

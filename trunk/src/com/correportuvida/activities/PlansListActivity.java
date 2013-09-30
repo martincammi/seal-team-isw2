@@ -1,5 +1,8 @@
 package com.correportuvida.activities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -12,6 +15,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.correportuvida.R;
+import com.correportuvida.adapters.PlanVisualAdapter;
+import com.correportuvida.model.Plan;
+import com.correportuvida.model.SportsDoctor;
+import com.correportuvida.model.Trainer;
+import com.correportuvida.model.runner.Runner;
 
 public class PlansListActivity extends ActionBarActivity {
 
@@ -22,9 +30,15 @@ public class PlansListActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plans_list);
         
-        String[] array = {"Plan1", "Plan2", "Plan3"};
+        Trainer trainer = new Trainer(new SportsDoctor());
+        Runner runner = new Runner(); //TODO: definir de donde vamos a sacar esto
+        List<PlanVisualAdapter> plans = new ArrayList<PlanVisualAdapter>();
+        plans.add(new PlanVisualAdapter(trainer.createPlan("Plan1", runner)));
+        plans.add(new PlanVisualAdapter(trainer.createPlan("Plan2", runner)));
+        plans.add(new PlanVisualAdapter(trainer.createPlan("Plan3", runner)));
         
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, array);
+        String[] planNames = getPlanNames(plans);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, planNames);
         
         ListView listView = (ListView) findViewById(R.id.rest_list_view);
         listView.setAdapter(adapter);
@@ -39,6 +53,13 @@ public class PlansListActivity extends ActionBarActivity {
         listView.setOnItemClickListener(mMessageClickedHandler); 
 
     }
+
+	private String[] getPlanNames(List<PlanVisualAdapter> plans) {
+		String[] array = new String[plans.size()];
+        for(int i=0;i<plans.size();i++)
+        	array[i] = plans.get(i).toString();
+		return array;
+	}
     
     public void goToTrainingActivity(View view) {
      
