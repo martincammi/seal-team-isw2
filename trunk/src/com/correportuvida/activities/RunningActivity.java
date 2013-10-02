@@ -68,6 +68,8 @@ public class RunningActivity extends FragmentActivity /*implements LocationListe
 	private void updateDistanceTraveled() {
 		
 		TextView valorDistancia = (TextView) findViewById(R.id.valueDistanceTraveled);
+		//TODO: esto tendria que hablar con el trainer y que el trainer se comunique
+		//con el navigato para que le devuelva distance!
 		valorDistancia.setText(new DecimalFormat("##.##").format(distance/1000) + " Km");
 
 //		Old Way
@@ -81,11 +83,14 @@ public class RunningActivity extends FragmentActivity /*implements LocationListe
 		Button buttonCancel = (Button) findViewById(R.id.button_cancel);
 		buttonCancel.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				//TODO: como referencio a la clase y no al listener!?
+				//ActivityController.OpenActivity(this, TrainingDetailActivity.class);
 				goToTrainingDetailActivity(v);
 			}
 		});
 	}
 	
+	//TODO: refactor, codigo duplicado
 	 public void goToTrainingDetailActivity(View view) {
     	Intent intent = new Intent(this, TrainingDetailActivity.class);
     	startActivity(intent);

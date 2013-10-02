@@ -26,6 +26,7 @@ public class TrainingDetailActivity extends FragmentActivity {
 		
 	}
 	
+	//TODO: refactor, codigo duplicado
 	public void goToRunningActivity(View view) {
     	Intent intent = new Intent(this, RunningActivity.class);
     	startActivity(intent);

@@ -60,11 +60,9 @@ public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange{
 		_positionVelocityTimeKeeper = new TimeKeeper(new TimeKeeperPositionVelocityNotice(this), positionVelocityLapse);
 	
 		_runningState = new RunningStateActive(_navigator);
-		_runningState.startTraining(training);
 	}
 	
 	public void cancelTraining(){
-		_runningState.cancelTraining();
 		_runningState = new RunningStateStopped(_navigator);
 	}
 	

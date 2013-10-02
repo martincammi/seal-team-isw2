@@ -1,6 +1,8 @@
 package com.correportuvida.model.runningstate;
 
 import com.correportuvida.model.Navigator;
+import com.correportuvida.model.base.GeographicalPosition;
+import com.correportuvida.model.base.Velocity;
 
 public class RunningStateActive extends RunningState{
 	public RunningStateActive(Navigator navigator)
@@ -11,7 +13,13 @@ public class RunningStateActive extends RunningState{
 
 	@Override
 	public void updateContext() {
-		// TODO Auto-generated method stub
+		Velocity newVelocity = _navigator.getVelocity();
+		GeographicalPosition position = _navigator.getPosition();
+		
+		//TODO: hay que hacer algo con la velocidad y la position... avisarle a la pantallita
+		//para que refresque, que se yo
+		
+		_statistics.update();
 		
 	}
 }
