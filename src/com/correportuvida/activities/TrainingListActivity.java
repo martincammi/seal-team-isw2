@@ -77,6 +77,7 @@ public class TrainingListActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	//TODO: refactor, codigo duplicado
 	 public void goToDetallePlanActivity(View view) {
 
 		Intent intent = new Intent(this, TrainingDetailActivity.class);

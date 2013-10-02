@@ -8,9 +8,10 @@ import com.correportuvida.model.training.Training;
  * Este es el que vaa usar el navegador para pedirle velocidad y esas cosas
  * */
 public abstract class RunningState {
-	private final Navigator _navigator;
-	private RunStatistics _statistics;
+	protected final Navigator _navigator;
+	protected RunStatistics _statistics;
 	
+	//Tan pronto como se crea el estado este empieza a trabajar
 	public RunningState(Navigator navigator)
 	{
 		_navigator = navigator;
@@ -20,20 +21,8 @@ public abstract class RunningState {
 	public void refreshInfo()
 	{
 		updateContext();
-		_statistics.update();
 	}
 	
 	public abstract void updateContext();
 	
-	//TODO: convert to abstract method
-	public void startTraining(Training training) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	//TODO: convert to abstract method
-	public void cancelTraining() {
-		// TODO Auto-generated method stub
-		
-	}
 }

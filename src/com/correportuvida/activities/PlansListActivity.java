@@ -20,6 +20,7 @@ import com.correportuvida.model.Plan;
 import com.correportuvida.model.SportsDoctor;
 import com.correportuvida.model.Trainer;
 import com.correportuvida.model.runner.Runner;
+import com.correportuvida.model.runner.RunnerBuilder;
 
 public class PlansListActivity extends ActionBarActivity {
 
@@ -31,7 +32,7 @@ public class PlansListActivity extends ActionBarActivity {
         setContentView(R.layout.activity_plans_list);
         
         Trainer trainer = new Trainer(new SportsDoctor());
-        Runner runner = new Runner(); //TODO: definir de donde vamos a sacar esto
+        Runner runner = RunnerBuilder.buildDefaultRunner();
         List<PlanVisualAdapter> plans = new ArrayList<PlanVisualAdapter>();
         plans.add(new PlanVisualAdapter(trainer.createPlan("Plan1", runner)));
         plans.add(new PlanVisualAdapter(trainer.createPlan("Plan2", runner)));
@@ -61,6 +62,7 @@ public class PlansListActivity extends ActionBarActivity {
 		return array;
 	}
     
+	//TODO: refactor, codigo duplicado (casi)
     public void goToTrainingActivity(View view) {
      
     	Intent intent = new Intent(this, TrainingListActivity.class);
