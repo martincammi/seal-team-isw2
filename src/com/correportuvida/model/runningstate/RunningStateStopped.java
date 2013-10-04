@@ -1,7 +1,7 @@
 package com.correportuvida.model.runningstate;
 
 import com.correportuvida.model.Navigator;
-
+@Deprecated
 public class RunningStateStopped extends RunningState{
 	public RunningStateStopped(Navigator navigator)
 	{

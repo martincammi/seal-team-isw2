@@ -3,7 +3,7 @@ package com.correportuvida.model.runningstate;
 import com.correportuvida.model.Navigator;
 import com.correportuvida.model.base.GeographicalPosition;
 import com.correportuvida.model.base.Velocity;
-
+@Deprecated
 public class RunningStateActive extends RunningState{
 	public RunningStateActive(Navigator navigator)
 	{
