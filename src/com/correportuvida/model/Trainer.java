@@ -58,8 +58,8 @@ public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange{
 	public void startTraining(Training training){
 		//TODO: Set Temporizadores, hay que levantarlos o de un archivo de config
 		//o de parametros del seteo del training
-		TimeLapse phaseLapse = new TimeLapse(1); //TODO: valores de prueba para empezar
-		TimeLapse positionVelocityLapse = new TimeLapse(3);
+		TimeLapse phaseLapse = new TimeLapse(1, TimeLapse.SECONDS); //TODO: valores de prueba para empezar
+		TimeLapse positionVelocityLapse = new TimeLapse(3, TimeLapse.SECONDS);
 		_phaseTimeKeeper = new TimeKeeper(new TimeKeeperPhaseChangeNotice(this), phaseLapse);
 		_positionVelocityTimeKeeper = new TimeKeeper(new TimeKeeperPositionVelocityNotice(this), positionVelocityLapse);
 	
