@@ -3,17 +3,23 @@ package com.correportuvida.model.runner;
 import com.correportuvida.model.base.WeeklyFrecuence;
 
 public class RunnerBuilder {
-	public static Runner buildDefaultRunner()
+	public static RunnerProfile buildDefaultProfile()
 	{
-		int timesAWeek = 2;
 		float height = (float)1.8;
 		float weight = 70;
-		RunnerAvailability availability = new RunnerAvailability(new WeeklyFrecuence(timesAWeek));
-		RunnerObjective objective = new RunnerObjective(); //TODO: incomplete
-		RunnerProfile profile = new RunnerProfile(height, weight);
-		RunnerState state = new RunnerState();//TODO: incomplete
-		
-		Runner defaultRunner = new Runner(profile, objective, availability, state);
-		return defaultRunner;
+		return new RunnerProfile(height, weight);
+	}
+	
+	public static RunnerObjective buildDefaultObjective(){
+		return new RunnerObjective(); //TODO: incomplete
+	}
+	
+	public static RunnerAvailability buildDefaultAvailability(){
+		int timesAWeek = 2;
+		return new RunnerAvailability(new WeeklyFrecuence(timesAWeek));
+	}
+	
+	public static RunnerState buildDefaultState(){
+		return new RunnerState("TODO", -1){};//TODO: incomplete
 	}
 }

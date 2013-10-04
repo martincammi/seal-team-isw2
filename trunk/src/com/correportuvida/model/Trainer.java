@@ -6,7 +6,10 @@ import java.util.List;
 import com.correportuvida.model.base.TimeLapse;
 import com.correportuvida.model.interfaces.NotifyPhaseChange;
 import com.correportuvida.model.interfaces.NotifyPositionVelocityChange;
-import com.correportuvida.model.runner.Runner;
+import com.correportuvida.model.runner.RunnerAvailability;
+import com.correportuvida.model.runner.RunnerObjective;
+import com.correportuvida.model.runner.RunnerProfile;
+import com.correportuvida.model.runner.RunnerState;
 import com.correportuvida.model.runningstate.RunningState;
 import com.correportuvida.model.runningstate.RunningStateActive;
 import com.correportuvida.model.runningstate.RunningStateStopped;
@@ -45,8 +48,9 @@ public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange{
 
 	//TODO: el plan donde lo guardamos?
 	//TODO: alguna vez se querra borrar un plan???
-	public Plan createPlan(String name, Runner runner){
-		Plan newPlan = _doctor.createPlan(name, runner);
+	public Plan createPlan(String name, RunnerProfile profile, RunnerObjective objective, 
+			   RunnerAvailability availability, RunnerState state){
+		Plan newPlan = _doctor.createPlan(name, profile, objective, availability, state);
 		_plans.add(newPlan);
 		return newPlan;
 	}

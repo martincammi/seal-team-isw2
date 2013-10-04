@@ -2,20 +2,18 @@ package com.correportuvida.model.runner;
 
 public abstract class RunnerState {
 	
-	private String _name;
-	private int value;
+	private final String _name;
+	private final int _value;
+	public RunnerState(String name, int value)
+	{
+		_name = name;
+		_value = value;
+	}
 	
-	public String get_name() {
+	public String getName() {
 		return _name;
 	}
-	public void set_name(String _name) {
-		this._name = _name;
-	}
 	public int getValue() {
-		return value;
+		return _value;
 	}
-	public void setValue(int value) {
-		this.value = value;
-	}
-	
 }
