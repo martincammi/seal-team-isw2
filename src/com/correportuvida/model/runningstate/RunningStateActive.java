@@ -19,7 +19,6 @@ public class RunningStateActive extends RunningState{
 		//TODO: hay que hacer algo con la velocidad y la position... avisarle a la pantallita
 		//para que refresque, que se yo
 		
-		_statistics.update();
 		
 	}
 }
