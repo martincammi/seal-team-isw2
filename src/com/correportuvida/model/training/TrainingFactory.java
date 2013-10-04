@@ -3,29 +3,32 @@ package com.correportuvida.model.training;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.correportuvida.model.runner.Runner;
+import com.correportuvida.model.runner.RunnerAvailability;
+import com.correportuvida.model.runner.RunnerObjective;
+import com.correportuvida.model.runner.RunnerProfile;
+import com.correportuvida.model.runner.RunnerState;
 
 public class TrainingFactory {
-	public List<Training> createTrainings(Runner runner){
+	public List<Training> createTrainings(RunnerProfile profile, RunnerObjective objective, RunnerAvailability availability, RunnerState state){
 		List<Training> trainings = new ArrayList<Training>();
 		//Todos los entrenamientos disponibles hasta el momento
-		trainings.add(createRecreativeTraining(runner));
-		trainings.add(createFullTraining(runner));
-		trainings.add(createVelocityTraining(runner));
+		trainings.add(createRecreativeTraining(profile, objective, availability, state));
+		trainings.add(createFullTraining(profile, objective, availability, state));
+		trainings.add(createVelocityTraining(profile, objective, availability, state));
 		
 		return trainings;
 	}
-	private Training createVelocityTraining(Runner runner) {
+	private Training createVelocityTraining(RunnerProfile profile, RunnerObjective objective, RunnerAvailability availability, RunnerState state) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	private Training createFullTraining(Runner runner) {
+	private Training createFullTraining(RunnerProfile profile, RunnerObjective objective, RunnerAvailability availability, RunnerState state) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	private Training createRecreativeTraining(Runner runner) {
+	private Training createRecreativeTraining(RunnerProfile profile, RunnerObjective objective, RunnerAvailability availability, RunnerState state) {
 		// TODO Auto-generated method stub
 		return null;
 	}

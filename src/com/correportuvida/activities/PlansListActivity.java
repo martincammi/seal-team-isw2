@@ -19,8 +19,11 @@ import com.correportuvida.adapters.PlanVisualAdapter;
 import com.correportuvida.model.Plan;
 import com.correportuvida.model.SportsDoctor;
 import com.correportuvida.model.Trainer;
-import com.correportuvida.model.runner.Runner;
+import com.correportuvida.model.runner.RunnerAvailability;
 import com.correportuvida.model.runner.RunnerBuilder;
+import com.correportuvida.model.runner.RunnerObjective;
+import com.correportuvida.model.runner.RunnerProfile;
+import com.correportuvida.model.runner.RunnerState;
 
 public class PlansListActivity extends ActionBarActivity {
 
@@ -32,11 +35,15 @@ public class PlansListActivity extends ActionBarActivity {
         setContentView(R.layout.activity_plans_list);
         
         Trainer trainer = new Trainer(new SportsDoctor());
-        Runner runner = RunnerBuilder.buildDefaultRunner();
+        RunnerProfile profile = RunnerBuilder.buildDefaultProfile();
+        RunnerObjective objective = RunnerBuilder.buildDefaultObjective();
+        RunnerAvailability availability = RunnerBuilder.buildDefaultAvailability();
+        RunnerState state = RunnerBuilder.buildDefaultState();
+        
         List<PlanVisualAdapter> plans = new ArrayList<PlanVisualAdapter>();
-        plans.add(new PlanVisualAdapter(trainer.createPlan("Plan1", runner)));
-        plans.add(new PlanVisualAdapter(trainer.createPlan("Plan2", runner)));
-        plans.add(new PlanVisualAdapter(trainer.createPlan("Plan3", runner)));
+        plans.add(new PlanVisualAdapter(trainer.createPlan("Plan1", profile, objective, availability, state)));
+        plans.add(new PlanVisualAdapter(trainer.createPlan("Plan2", profile, objective, availability, state)));
+        plans.add(new PlanVisualAdapter(trainer.createPlan("Plan3", profile, objective, availability, state)));
         
         String[] planNames = getPlanNames(plans);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, planNames);
