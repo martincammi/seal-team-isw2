@@ -8,14 +8,14 @@ public class Phase {
 	private TimeLapse _lapse;
 	private Velocity _maxSpeed;
 	private Velocity _minSpeed;
-	private int _faseCount;
+	private int _phaseNumber;
 
-	public Phase(String name, TimeLapse lapse, Velocity maxSpeed, Velocity minSpeed, int faseCount){
+	public Phase(String name, TimeLapse lapse, Velocity maxSpeed, Velocity minSpeed, int phaseNumber){
 		_name = name;
 		_lapse = lapse;
 		_maxSpeed = maxSpeed;
 		_minSpeed = minSpeed;
-		_faseCount = faseCount;
+		_phaseNumber = phaseNumber;
 	}
 	
 	public String getName() {
@@ -34,7 +34,7 @@ public class Phase {
 		return _minSpeed;
 	}
 	
-	public int getPhaseCount() {
-		return _faseCount;
+	public int getPhaseNumber() {
+		return _phaseNumber;
 	}
 }
