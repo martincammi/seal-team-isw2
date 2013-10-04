@@ -7,6 +7,7 @@ import com.correportuvida.model.training.Training;
 /*TODO:
  * Este es el que vaa usar el navegador para pedirle velocidad y esas cosas
  * */
+@Deprecated
 public abstract class RunningState {
 	protected final Navigator _navigator;
 	
