@@ -6,10 +6,13 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 
+import com.correportuvida.model.base.TimeLapse;
+import com.correportuvida.model.interfaces.Reportable;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -85,40 +88,30 @@ public class GoogleMapsService {
 	/**
 	 * Updates the current location every 20 seconds.
 	 */
-	public void updateCurrentLocation(LocationListener locationListener){
+	public void updateCurrentLocation(final Reportable reportable, TimeLapse timeLapse){
 	
-	LocationManager locationManager = getLocationManager(); 
-	Criteria criteria = new Criteria();
-	String provider = locationManager.getBestProvider(criteria, true);
-//  	LocationListener locationListener = new LocationListener() {
-//    		
-//            public void onLocationChanged(Location location) {
-//            	// redraw the marker when get location update.
-//            	LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
-//            	drawBlueMarker(latLng, "You are here!");
-//            }
-//
-//			@Override
-//			public void onProviderDisabled(String provider) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//
-//			@Override
-//			public void onProviderEnabled(String provider) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//
-//			@Override
-//			public void onStatusChanged(String provider, int status,
-//					Bundle extras) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//    	};
-    	
-		locationManager.requestLocationUpdates(provider, 10000, 0, locationListener);
+		LocationListener locationListener = new LocationListener() {
+			
+			@Override
+			public void onLocationChanged(Location location) {
+				reportable.report();
+			}
+			
+			@Override
+			public void onStatusChanged(String provider, int status, Bundle extras) {}
+			
+			@Override
+			public void onProviderEnabled(String provider) {}
+			
+			@Override
+			public void onProviderDisabled(String provider) {}
+		
+		};
+		
+		LocationManager locationManager = getLocationManager(); 
+		Criteria criteria = new Criteria();
+		String provider = locationManager.getBestProvider(criteria, true);
+		locationManager.requestLocationUpdates(provider, timeLapse.getLapse() , 0, locationListener);
 	}
 	
 	public void drawBlueMarker(LatLng latlong, String iconTitle){
