@@ -1,5 +1,6 @@
 package com.correportuvida.model.runner;
 
+import com.correportuvida.model.base.Distance;
 import com.correportuvida.model.base.WeeklyFrecuence;
 
 public class RunnerBuilder {
@@ -11,7 +12,7 @@ public class RunnerBuilder {
 	}
 	
 	public static RunnerObjective buildDefaultObjective(){
-		return new RunnerObjective(); //TODO: incomplete
+		return new RunnerObjective(new Distance(1)); //TODO: incomplete
 	}
 	
 	public static RunnerAvailability buildDefaultAvailability(){
