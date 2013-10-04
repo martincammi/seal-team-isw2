@@ -7,28 +7,33 @@ import com.correportuvida.model.interfaces.*;
 import com.correportuvida.model.base.*;
 
 public class TimeKeeper {
-	private final Reportable _reportable;
+	
 	private final Timer _timer;
-	private final TimeKeeperTask _timeKeeperTask;
+	
+	private TimeLapse _lapseTime;
+	private final Reportable _reportable;
+
 	private final int NO_START_DELAY = 0;
 	private final int MS = 1000;
 		
-	public TimeKeeper(Reportable notificable, TimeLapse lapso)
+	/**
+	 * Once the TimeKeeper is initialized begins to tic tac.
+	 * @param notificable
+	 * @param lapseTime
+	 */
+	public TimeKeeper(Reportable notificable, TimeLapse lapseTime)
 	{
-		_reportable = notificable;
 		_timer = new Timer();
-		_timeKeeperTask =new TimeKeeperTask();
-		_timer.schedule(_timeKeeperTask, NO_START_DELAY , lapso.getSecondsQuantity() * MS);
+		_lapseTime = lapseTime; 
+		_reportable = notificable;
+		_timer.schedule( new TimeKeeperTask(), NO_START_DELAY , _lapseTime.getSecondsQuantity() * MS);
 	}
 	
 	public void modifyTimeLapse(TimeLapse lapse)
 	{
-		_timer.schedule(_timeKeeperTask, lapse.getSecondsQuantity() * MS);
+		_timer.schedule( new TimeKeeperTask(), lapse.getSecondsQuantity() * MS);
 	}
 
-	//TODO: Esta herencia no se si es correcto
-	//pero no tengo forma sino mas que meter una funcion anonima ahi en el medio 
-	//y te diria que me gusta menos aun.
 	class TimeKeeperTask extends TimerTask
 	{
 		@Override

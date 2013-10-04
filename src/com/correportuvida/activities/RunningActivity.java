@@ -81,6 +81,11 @@ public class RunningActivity extends FragmentActivity /*implements LocationListe
 		
 	}
 
+	private void updateCurrentSpeed() {
+		TextView valorDistancia = (TextView) findViewById(R.id.valueDistanceTraveled);
+		//updateCurrentSpeed
+	}
+
 	private void addButtonCancelBehaviour() {
 		Button buttonCancel = (Button) findViewById(R.id.button_cancel);
 		buttonCancel.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +147,7 @@ public class RunningActivity extends FragmentActivity /*implements LocationListe
 				currentLocation = location;
 				
 				updateDistanceTraveled();
+				updateCurrentSpeed();
 		 
 		    }
 			

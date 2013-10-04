@@ -2,6 +2,7 @@ package com.correportuvida.model.timekeeper;
 
 import com.correportuvida.model.interfaces.*;
 
+@Deprecated
 public class TimeKeeperPositionVelocityNotice implements Reportable{
 	/*
 	 * Adapter
