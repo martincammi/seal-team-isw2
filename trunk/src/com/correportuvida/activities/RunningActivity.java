@@ -18,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.correportuvida.R;
+import com.correportuvida.model.Trainer;
+import com.correportuvida.model.timekeeper.TimeKeeperPositionVelocityNotice;
 import com.correportuvida.services.GoogleMapsService;
 import com.correportuvida.util.HexColor;
 import com.google.android.gms.maps.model.BitmapDescriptor;
@@ -29,8 +31,8 @@ import com.google.android.gms.maps.model.PolylineOptions;
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class RunningActivity extends FragmentActivity /*implements LocationListener*/  {
 	
-	private Marker currentMarker;
-	private Location currentLocation;
+	//private Marker currentMarker;
+	//private Location currentLocation;
 	private float distance = 0;
 	private GoogleMapsService googleMapService;
 	private LocationListener locationListener; 
@@ -41,7 +43,10 @@ public class RunningActivity extends FragmentActivity /*implements LocationListe
 		setContentView(R.layout.activity_running);
 		
 		initVariablesAndListeners();
-        
+		
+		//new Navigator(googleMapService, new TimeKeeperPositionVelocityNotice(this));
+		
+		
         if(googleMapService.servicesConnected()){
         
         	googleMapService.updateCurrentLocation(getLocationListener());
@@ -111,9 +116,9 @@ public class RunningActivity extends FragmentActivity /*implements LocationListe
 		return true;
 	}
 	
-	public LocationListener getLocationListener(){
-		return locationListener;
-	}
+//	public LocationListener getLocationListener(){
+//		return locationListener;
+//	}
 	
 	public LocationListener createLocationListener(){
 		

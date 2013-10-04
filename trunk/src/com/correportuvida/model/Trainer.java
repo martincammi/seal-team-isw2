@@ -3,83 +3,96 @@ package com.correportuvida.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.correportuvida.controller.Controller;
 import com.correportuvida.model.base.TimeLapse;
+import com.correportuvida.model.base.Velocity;
 import com.correportuvida.model.interfaces.NotifyPhaseChange;
 import com.correportuvida.model.interfaces.NotifyPositionVelocityChange;
-import com.correportuvida.model.runner.RunnerAvailability;
-import com.correportuvida.model.runner.RunnerObjective;
-import com.correportuvida.model.runner.RunnerProfile;
-import com.correportuvida.model.runner.RunnerState;
-import com.correportuvida.model.runningstate.RunningState;
-import com.correportuvida.model.runningstate.RunningStateActive;
-import com.correportuvida.model.runningstate.RunningStateStopped;
+import com.correportuvida.model.runningstate.ActiveNavigator;
+import com.correportuvida.model.runningstate.NavigatorState;
+import com.correportuvida.model.runningstate.StoppedNavigator;
 import com.correportuvida.model.timekeeper.TimeKeeper;
 import com.correportuvida.model.timekeeper.TimeKeeperPhaseChangeNotice;
 import com.correportuvida.model.timekeeper.TimeKeeperPositionVelocityNotice;
 import com.correportuvida.model.training.Training;
 
-public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange{
+public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange {
+	
+	private static Trainer _trainer;
+	private TimeKeeper _phaseTimeKeeper; //TODO: Verificar si al perder scope deja de actualizar.
+	private final Controller _controller;
+	
 	private final SportsDoctor _doctor;
-	private final Navigator _navigator;
+	private List<Plan> _plans = new ArrayList<Plan>();
+	private NavigatorState _navigatorState;
 	
-	private TimeKeeper _phaseTimeKeeper;
-	private TimeKeeper _positionVelocityTimeKeeper;
-	private RunningState _runningState;
-	private List<Plan> _plans;
 	
-	//TODO: los lapsos iniciales deberia saberlo el entrenador
-	public Trainer(SportsDoctor doctor) 
-	{
+	public static Trainer createInitialInstance(SportsDoctor sportDoctor, Controller controller) {
 		
-		//Set deportologo
-		_doctor = doctor;
+		if(_trainer == null){
+			_trainer = new Trainer (sportDoctor, controller);
+		}
 		
-		//Set navegador
-		_navigator = new Navigator();
-		
-		//Set estado (corriendo o detenido)
-		_runningState = new RunningStateStopped(_navigator);
-		
-		//Set lista de planes.
-		_plans = new ArrayList<Plan>();
-		
-		//TODO: implementar correctamente
+		return _trainer;
 	}
-
-	//TODO: el plan donde lo guardamos?
-	//TODO: alguna vez se querra borrar un plan???
-	public Plan createPlan(String name, RunnerProfile profile, RunnerObjective objective, 
-			   RunnerAvailability availability, RunnerState state){
-		Plan newPlan = _doctor.createPlan(name, profile, objective, availability, state);
+	
+	public static Trainer createInstance() throws Exception {
+		
+		if(_trainer == null){
+			throw new Exception("There is no instance");
+		}
+		return _trainer;
+	}
+	
+	private Trainer(SportsDoctor sportDoctor, Controller controller) 
+	{
+		_doctor = sportDoctor;
+		_navigatorState = new StoppedNavigator();
+		_controller = controller;
+	}
+	
+	public Plan createPlan(String name){
+		Plan newPlan = new Plan(name, _doctor.getTrainings()); 
 		_plans.add(newPlan);
 		return newPlan;
 	}
 	
-	public void startTraining(Training training){
-		//TODO: Set Temporizadores, hay que levantarlos o de un archivo de config
-		//o de parametros del seteo del training
-		TimeLapse phaseLapse = new TimeLapse(1, TimeLapse.SECONDS); //TODO: valores de prueba para empezar
-		TimeLapse positionVelocityLapse = new TimeLapse(3, TimeLapse.SECONDS);
-		_phaseTimeKeeper = new TimeKeeper(new TimeKeeperPhaseChangeNotice(this), phaseLapse);
-		_positionVelocityTimeKeeper = new TimeKeeper(new TimeKeeperPositionVelocityNotice(this), positionVelocityLapse);
+	public List<Plan> getPlans(){
+		return _plans;
+	}
 	
-		_runningState = new RunningStateActive(_navigator);
+	public void startTraining(Training training, Navigator navigator){
+		
+		TimeLapse phaseLapse = new TimeLapse(1, TimeLapse.SECONDS); //TODO: valores de prueba para empezar
+		_phaseTimeKeeper = new TimeKeeper(new TimeKeeperPhaseChangeNotice(this), phaseLapse);
+		
+		TimeLapse positionVelocityLapse = new TimeLapse(3, TimeLapse.SECONDS);
+		navigator.start(new TimeKeeperPositionVelocityNotice(this), positionVelocityLapse);
+		
+		_navigatorState = new ActiveNavigator(navigator);
 	}
 	
 	public void cancelTraining(){
-		_runningState = new RunningStateStopped(_navigator);
+		//TODO: ver si el objeto sigue vivo _navigatorState.stopNavigation();
+		_navigatorState = new StoppedNavigator();
 	}
 	
 	@Override
 	public void notifyPhaseChanged() {
-		// TODO Auto-generated method stub
-		System.out.println("NotificarCambioFase");
+		_controller.notifyPhaseChanged(this);
 	}
 
 	@Override
 	public void notifyPositionVelocityChanged() {
-		// TODO Auto-generated method stub
-		System.out.println("NotificarCambioPosicionVelocidad");
-		_runningState.refreshInfo();
+
+		_navigatorState.updateCurrentLocation();
+			
+		_controller.notifyPositionVelocityChanged(this);
+		
+	}
+	
+	public Velocity getCurrentVelocity()
+	{
+		return _navigatorState.getCurrentSpeed();
 	}
 }
