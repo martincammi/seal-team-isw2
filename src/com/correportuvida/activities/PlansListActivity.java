@@ -16,7 +16,7 @@ import android.widget.ListView;
 
 import com.correportuvida.R;
 import com.correportuvida.adapters.PlanVisualAdapter;
-import com.correportuvida.model.Plan;
+import com.correportuvida.controller.Controller;
 import com.correportuvida.model.SportsDoctor;
 import com.correportuvida.model.Trainer;
 import com.correportuvida.model.runner.RunnerAvailability;
@@ -34,18 +34,23 @@ public class PlansListActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plans_list);
         
-        Trainer trainer = new Trainer(new SportsDoctor());
+        
         RunnerProfile profile = RunnerBuilder.buildDefaultProfile();
         RunnerObjective objective = RunnerBuilder.buildDefaultObjective();
         RunnerAvailability availability = RunnerBuilder.buildDefaultAvailability();
         RunnerState state = RunnerBuilder.buildDefaultState();
+
+        Controller controller = new Controller(this);  
+
+        Trainer trainer = Trainer.createInitialInstance(new SportsDoctor(profile, objective, availability, state), controller);
         
-        List<PlanVisualAdapter> plans = new ArrayList<PlanVisualAdapter>();
-        plans.add(new PlanVisualAdapter(trainer.createPlan("Plan1", profile, objective, availability, state)));
-        plans.add(new PlanVisualAdapter(trainer.createPlan("Plan2", profile, objective, availability, state)));
-        plans.add(new PlanVisualAdapter(trainer.createPlan("Plan3", profile, objective, availability, state)));
+        List<PlanVisualAdapter> adaptedPlans = new ArrayList<PlanVisualAdapter>();
         
-        String[] planNames = getPlanNames(plans);
+        adaptedPlans.add(new PlanVisualAdapter(trainer.createPlan("Plan1")));
+        adaptedPlans.add(new PlanVisualAdapter(trainer.createPlan("Plan2")));
+        adaptedPlans.add(new PlanVisualAdapter(trainer.createPlan("Plan3")));
+        
+        String[] planNames = getPlanNames(adaptedPlans);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, planNames);
         
         ListView listView = (ListView) findViewById(R.id.rest_list_view);
