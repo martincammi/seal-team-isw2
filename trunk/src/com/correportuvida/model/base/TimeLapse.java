@@ -1,15 +1,24 @@
 package com.correportuvida.model.base;
 
 public class TimeLapse {
-	private final int _lapseInSeconds;
 	
-	public TimeLapse(int lapseInSeconds)
+	public static final String SECONDS = "seconds"; 
+	
+	private final int _lapse;
+	private final String _unit;
+	
+	public TimeLapse(int lapse, String unit)
 	{
-		_lapseInSeconds = lapseInSeconds;
+		_lapse = lapse;
+		_unit = unit;
 	}
 	
-	public int getSecondsQuantity()
+	public int getLapse()
 	{
-		return _lapseInSeconds;
+		return _lapse;
+	}
+
+	public String getUnit() {
+		return _unit;
 	}
 }

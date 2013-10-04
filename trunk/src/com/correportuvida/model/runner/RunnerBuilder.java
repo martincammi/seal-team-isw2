@@ -12,7 +12,7 @@ public class RunnerBuilder {
 	}
 	
 	public static RunnerObjective buildDefaultObjective(){
-		return new RunnerObjective(new Distance(1)); //TODO: incomplete
+		return new RunnerObjective(new Distance(1, Distance.METERS)); //TODO: incomplete
 	}
 	
 	public static RunnerAvailability buildDefaultAvailability(){

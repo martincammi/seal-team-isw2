@@ -4,6 +4,7 @@ public abstract class RunnerState {
 	
 	private final String _name;
 	private final int _value;
+	
 	public RunnerState(String name, int value)
 	{
 		_name = name;

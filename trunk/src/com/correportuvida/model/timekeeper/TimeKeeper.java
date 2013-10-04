@@ -26,12 +26,12 @@ public class TimeKeeper {
 		_timer = new Timer();
 		_lapseTime = lapseTime; 
 		_reportable = notificable;
-		_timer.schedule( new TimeKeeperTask(), NO_START_DELAY , _lapseTime.getSecondsQuantity() * MS);
+		_timer.schedule( new TimeKeeperTask(), NO_START_DELAY , _lapseTime.getLapse() * MS);
 	}
 	
 	public void modifyTimeLapse(TimeLapse lapse)
 	{
-		_timer.schedule( new TimeKeeperTask(), lapse.getSecondsQuantity() * MS);
+		_timer.schedule( new TimeKeeperTask(), lapse.getLapse() * MS);
 	}
 
 	class TimeKeeperTask extends TimerTask
