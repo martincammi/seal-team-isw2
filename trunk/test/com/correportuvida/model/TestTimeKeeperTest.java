@@ -10,7 +10,8 @@ public class TestTimeKeeperTest extends TestCase {
 		
 		TimeLapse timePhase = new TimeLapse(1);
 		TimeLapse timePositionVelocity = new TimeLapse(3);
-		Trainer trainer = new Trainer(timePhase, timePositionVelocity);
+		//Trainer trainer = new Trainer(timePhase, timePositionVelocity);
+		Trainer trainer = new Trainer(new SportsDoctor());
 		boolean breakMotherfucker = true;
 		assertFalse(breakMotherfucker);
 		

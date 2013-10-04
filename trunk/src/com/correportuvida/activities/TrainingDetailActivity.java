@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 
 import com.correportuvida.R;
 
@@ -16,7 +16,7 @@ public class TrainingDetailActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_training_detail);
 		
-		Button buttonStart = (Button) findViewById(R.id.button_start);
+		TextView buttonStart = (TextView) findViewById(R.id.button_start);
 		
 		buttonStart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
