@@ -50,6 +50,8 @@ public class RunningActivity extends FragmentActivity /*implements LocationListe
             if(location != null){
             	currentLocation = location;
                 getLocationListener().onLocationChanged(location);
+            }else{
+            	Toast.makeText( getApplicationContext(), "Location not available", Toast.LENGTH_LONG ).show();
             }
         }else{
         	Toast.makeText( getApplicationContext(), "Map not available", Toast.LENGTH_SHORT ).show();
