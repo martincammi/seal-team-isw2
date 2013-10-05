@@ -9,14 +9,15 @@ import com.correportuvida.controllers.Controller;
 import com.correportuvida.controllers.TrainingDetailController;
 
 public class TrainingDetailActivity extends FragmentActivity {
-
+	private Controller _controller;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_training_detail);
 		
-		Controller controller = new TrainingDetailController(this);
-		controller.updateView();
+		_controller = new TrainingDetailController(this);
+		_controller.updateView();
 		
 	}
 	
@@ -26,5 +27,10 @@ public class TrainingDetailActivity extends FragmentActivity {
 		getMenuInflater().inflate(R.menu.running, menu);
 		return true;
 	}
-
+	
+	@Override
+	public void onBackPressed()
+	{
+		_controller.buttonBackPressed(); 
+	}
 }

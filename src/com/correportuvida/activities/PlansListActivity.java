@@ -77,12 +77,11 @@ public class PlansListActivity extends ActionBarActivity {
 		return array;
 	}
     
-	//TODO: refactor, codigo duplicado (casi)
+	//TODO: refactor, codigo duplicado
     public void goToTrainingActivity(View view) {
      
     	Intent intent = new Intent(this, TrainingListActivity.class);
     	String planName = ((TextView) view).getText().toString();
-    	//Plan selectedPlan = Trainer.getInstance().getPlan(planName);
     	intent.putExtra(PLAN_NAME, planName);
     	startActivity(intent);
     	

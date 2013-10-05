@@ -24,7 +24,6 @@ import com.correportuvida.model.training.Training;
 import com.correportuvida.util.Util;
 
 public class TrainingListActivity extends Activity {
-
 	private Plan plan;
 	
 	public static String TRAINING_NAME = "TrainingListActivity.planName";
@@ -74,6 +73,13 @@ public class TrainingListActivity extends Activity {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
+	}
+
+	@Override
+	public void onBackPressed()
+	{
+		Intent intent = new Intent(this, PlansListActivity.class);
+    	startActivity(intent);
 	}
 
 	@Override
