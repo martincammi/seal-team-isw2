@@ -4,7 +4,7 @@ public class RhythmStatus {
 
 	private final String GOOD = "Vas bien";
 	private final String SPEED_UP = "Metele pata";
-	private final String SPEED_DOWN = "Bajá un cambio";
+	private final String SPEED_DOWN = "Baja un cambio";
 	
 	public String getRhythm(Velocity minVelocity, Velocity maxVelocity, Velocity currentVelocity){
 		

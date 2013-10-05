@@ -108,6 +108,14 @@ public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange 
 		return rhythmStatus.getRhythm(_currentPhase.getMinSpeed(), _currentPhase.getMaxSpeed(), getCurrentVelocity());
 	}
 	
+	public Velocity getMaxVelocity(){
+		return _currentPhase.getMaxSpeed();
+	}
+	
+	public Velocity getMinVelocity(){
+		return _currentPhase.getMinSpeed();
+	}
+	
 	@Override
 	public void notifyPhaseChanged() {
 		_controller.notifyPhaseChanged(this);
