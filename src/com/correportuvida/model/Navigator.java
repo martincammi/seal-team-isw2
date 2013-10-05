@@ -25,12 +25,10 @@ public class Navigator {
 	private Marker currentMarker;
 	private Location currentLocation;
 	private float _distance = 0;
-	private Activity _activity;
 	private Velocity currentVelocity;
 	
-	public Navigator(GoogleMapsService googleMapsService, Activity activity) throws Exception{
+	public Navigator(GoogleMapsService googleMapsService) throws Exception{
 		_googleMapsService = googleMapsService;
-		_activity = activity;
 		
 		if(!_googleMapsService.servicesConnected()){
 			  throw new Exception("The Google map is not correclty initialized");
@@ -80,7 +78,6 @@ public class Navigator {
 	          
 	          currentMarker = _googleMapsService.drawMarker(coordinates, "Exactas is cool", getCorrePorTuVidaIcon(), "Posicion actual");
 	
-	          //googleMapService.moveToPositionInGoogleMapWithEffect(currentMarker);
 	          _googleMapsService.moveToPositionInGoogleMap(currentMarker);
 	        
 	        float lastDistance = 0; 
@@ -98,7 +95,6 @@ public class Navigator {
 	  		float kilometersInHour = lastDistance * millisecondsInHour / millisecondsSpent;
 	  		
 	  		currentVelocity = new Velocity(new Distance(kilometersInHour, Distance.KILOMETERS), oneHour);
-  		
   		
 	}
 	
@@ -122,7 +118,6 @@ public class Navigator {
             options.add(locRecorded);
         }
 
-        //googleMap.addPolyline( options );
         _googleMapsService.addPolyLine(options);
     }
 	

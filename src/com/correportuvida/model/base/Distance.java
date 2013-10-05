@@ -8,7 +8,6 @@ public class Distance {
 	public static final Distance TwoKM = new Distance(2,KILOMETERS);
 	public static final Distance FiveKM = new Distance(5,KILOMETERS);
 	
-	
 	private final float _value;
 	private final String _unit;
 	

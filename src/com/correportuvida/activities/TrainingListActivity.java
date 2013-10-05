@@ -58,13 +58,6 @@ public class TrainingListActivity extends Activity {
 	        listView.setOnItemClickListener(mMessageClickedHandler); 
 	}
 
-	private List<String> getTrainingNames(List<Training> trainings) {
-		List<String> trainingNames = Util.collectAsString(trainings, "name");
-		
-		String[] trainingNamesArray =  trainingNames.toArray(new String[trainingNames.size()]);
-		return trainingNames;
-	}
-
 	/**
 	 * Set up the {@link android.app.ActionBar}, if the API is available.
 	 */

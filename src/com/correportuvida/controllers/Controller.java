@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.correportuvida.activities.TrainingListActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 

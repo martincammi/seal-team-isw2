@@ -3,7 +3,6 @@ package com.correportuvida.controllers;
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,7 +63,7 @@ public  class RunningController extends Controller {
 	
 	private Navigator getNavigator() throws Exception {
 		GoogleMapsService googleMapService = new GoogleMapsService(getActivity().getBaseContext(), (FragmentActivity)getActivity(), ((FragmentActivity)getActivity()).getSupportFragmentManager(), R.id.map);
-		Navigator navigator = new Navigator(googleMapService, getActivity());
+		Navigator navigator = new Navigator(googleMapService);
 		return navigator;
 	}
 	

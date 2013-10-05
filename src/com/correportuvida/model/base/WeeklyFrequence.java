@@ -1,10 +1,10 @@
 package com.correportuvida.model.base;
 
-public class WeeklyFrecuence {
+public class WeeklyFrequence {
 	
 	private final int _timesAWeek;
 	
-	public WeeklyFrecuence(int timesAWeek)
+	public WeeklyFrequence(int timesAWeek)
 	{
 		_timesAWeek = timesAWeek;
 	}

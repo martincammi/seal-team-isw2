@@ -5,10 +5,6 @@ import java.util.List;
 import com.correportuvida.model.Phase;
 import com.correportuvida.model.Plan;
 
-/**
- * @author martincammi
- *
- */
 public class Training {
 	
 	private final String _name;
