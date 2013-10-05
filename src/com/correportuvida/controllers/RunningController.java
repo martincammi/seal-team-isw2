@@ -22,9 +22,14 @@ import com.correportuvida.model.training.Training;
 import com.correportuvida.services.GoogleMapsService;
 
 public  class RunningController extends Controller {
+	private final String _planName;
+	private final String _trainingName;
 	
 	public RunningController(Activity activity) {
 		super(activity);
+		
+		_planName = (String) getActivity().getIntent().getSerializableExtra(PlansListActivity.PLAN_NAME);
+		_trainingName = (String) getActivity().getIntent().getSerializableExtra(TrainingListActivity.TRAINING_NAME);
 	}
 
 	@Override
@@ -33,14 +38,11 @@ public  class RunningController extends Controller {
 		try {
 			addButtonCancelBehaviour();
 			
-			String planName = (String) getActivity().getIntent().getSerializableExtra(PlansListActivity.PLAN_NAME);
-			String trainingName = (String) getActivity().getIntent().getSerializableExtra(TrainingListActivity.TRAINING_NAME);
-			
-			setTrainingName(trainingName);
+			setTrainingName(_trainingName);
 			
 			Trainer trainer = Trainer.getInstance();
 			trainer.setController(this);
-			Training training = trainer.getTraining(planName, trainingName);
+			Training training = trainer.getTraining(_planName, _trainingName);
 			
 			Navigator navigator;
 			navigator = getNavigator();
@@ -48,7 +50,7 @@ public  class RunningController extends Controller {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			Toast.makeText( getActivity().getApplicationContext(), "Map not available", Toast.LENGTH_SHORT ).show();
+			Toast.makeText( getActivity().getApplicationContext(), "Map not available", Toast.LENGTH_LONG ).show();
 		}
 		
 	}
@@ -63,7 +65,8 @@ public  class RunningController extends Controller {
 		Button buttonCancel = (Button) getActivity().findViewById(R.id.button_cancel);
 		buttonCancel.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				goToActivity(TrainingListActivity.class);
+				Trainer.getInstance().cancelTraining();
+				goToActivity(TrainingListActivity.class, PlansListActivity.PLAN_NAME, _planName);
 			}
 		});
 	}
