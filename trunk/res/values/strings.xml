@@ -15,7 +15,7 @@
     <string name="value_fase">1</string>
     <string name="title_training">Entrenamiento recreativo</string>
     <string name="label_distancia_recorrida">Distancia Recorrida</string>
-    <string name="value_distancia_recorrida">1.2 Km</string>
+    <string name="value_distancia_recorrida"></string>
     <string name="label_velocidad_alcanzar">Velocidad a alcanzar</string>
     <string name="value_velocidad_alcanzar">5 Km/h</string>
     <string name="label_cambio_velocidad">Cambio de velocidad</string>
@@ -24,6 +24,8 @@
 	
     <!-- RunningActivity -->
     <string name="button_cancel">Parar</string>
+    <string name="label_velocidad_actual">Velocidad Actual</string>
+    <string name="value_velocidad_actual"></string>
     
 	<!-- TrainingDetailActivity -->
 	<string name="label_nombre_plan">Plan</string>
