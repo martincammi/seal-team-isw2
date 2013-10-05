@@ -86,7 +86,8 @@ public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange 
 		TimeLapse phaseLapse = firstPhase.getTimeLapse();
 		_phaseTimeKeeper = new TimeKeeper(new TimeKeeperPhaseChangeNotice(this), phaseLapse);
 		
-		TimeLapse positionVelocityLapse = new TimeLapse(10, TimeLapse.SECONDS); //TODO: Set depending on memory consumption
+		//TODO: arreglar el timeLapse para que tome segundos.
+		TimeLapse positionVelocityLapse = new TimeLapse(2000, TimeLapse.SECONDS); //TODO: Set depending on memory consumption
 		navigator.start(new TimeKeeperPositionVelocityNotice(this), positionVelocityLapse);
 		
 		_navigatorState = new ActiveNavigator(navigator);

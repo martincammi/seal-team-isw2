@@ -66,8 +66,8 @@ public  class RunningController extends Controller {
 	
 	public void notifyPositionVelocityChanged(Trainer trainer) {
 		Velocity velocity = trainer.getCurrentVelocity();
-		TextView valorDistancia = (TextView) getActivity().findViewById(R.id.valueDistanceTraveled);
-		valorDistancia.setText((new VelocityAdapter(velocity)).toString());
+		TextView currentVelocity = (TextView) getActivity().findViewById(R.id.valueVelocidadActual);
+		currentVelocity.setText((new VelocityAdapter(velocity)).toString());
 	}
 
 	public void notifyPhaseChanged(Trainer trainer) {
