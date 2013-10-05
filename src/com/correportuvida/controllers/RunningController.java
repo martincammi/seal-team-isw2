@@ -36,6 +36,8 @@ public  class RunningController extends Controller {
 			String planName = (String) getActivity().getIntent().getSerializableExtra(PlansListActivity.PLAN_NAME);
 			String trainingName = (String) getActivity().getIntent().getSerializableExtra(TrainingListActivity.TRAINING_NAME);
 			
+			setTrainingName(trainingName);
+			
 			Trainer trainer = Trainer.getInstance();
 			trainer.setController(this);
 			Training training = trainer.getTraining(planName, trainingName);
@@ -71,6 +73,12 @@ public  class RunningController extends Controller {
 		updateDistanceTraveled(trainer);
 	}
 
+	private void setTrainingName(String trainingName)
+	{
+		TextView trainingView = (TextView) getActivity().findViewById(R.id.labelEntretainmentName);
+		trainingView.setText(trainingName);
+	}
+	
 	private void updateDistanceTraveled(Trainer trainer) {
 		Distance currentDistance = trainer.getCurrentDistance();
 		TextView distanceValue = (TextView) getActivity().findViewById(R.id.valueDistanceTraveled);
