@@ -1,5 +1,7 @@
 package com.correportuvida.activities;
 
+import java.util.List;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -10,14 +12,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 
 import com.correportuvida.R;
+import com.correportuvida.model.Plan;
+import com.correportuvida.model.Trainer;
+import com.correportuvida.model.training.Training;
+import com.correportuvida.util.Util;
 
 public class TrainingListActivity extends Activity {
 
+	private Plan plan;
+	
+	public static String TRAINING_NAME = "TrainingListActivity.planName";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -25,9 +35,16 @@ public class TrainingListActivity extends Activity {
 		// Show the Up button in the action bar.
 		setupActionBar();
 		
-		 String[] array = {"Training Recreativo", "Training de Fondo", "Training de Velocidad"};
-	        
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, array);
+		String planName = (String) getIntent().getSerializableExtra(PlansListActivity.PLAN_NAME);
+		
+		plan = Trainer.getInstance().getPlan(planName);
+		
+		List<Training> trainings = plan.getTrainings();
+		
+		//List<String> trainingNames = getTrainingNames(trainings);
+		List<String> trainingNames = Util.collectAsString(trainings, "name");
+		
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, trainingNames);
         
         ListView listView = (ListView) findViewById(R.id.rest_list_view);
         listView.setAdapter(adapter);
@@ -41,6 +58,13 @@ public class TrainingListActivity extends Activity {
         };
 
 	        listView.setOnItemClickListener(mMessageClickedHandler); 
+	}
+
+	private List<String> getTrainingNames(List<Training> trainings) {
+		List<String> trainingNames = Util.collectAsString(trainings, "name");
+		
+		String[] trainingNamesArray =  trainingNames.toArray(new String[trainingNames.size()]);
+		return trainingNames;
 	}
 
 	/**
@@ -81,6 +105,10 @@ public class TrainingListActivity extends Activity {
 	 public void goToDetallePlanActivity(View view) {
 
 		Intent intent = new Intent(this, TrainingDetailActivity.class);
+		String trainingName = ((TextView) view).getText().toString();
+		//Training selectedTraining = plan.getTraining(trainingName);
+		intent.putExtra(TRAINING_NAME, trainingName);
+		intent.putExtra(PlansListActivity.PLAN_NAME, plan.getName());
     	startActivity(intent);
 	 }
 	    

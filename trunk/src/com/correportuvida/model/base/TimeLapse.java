@@ -3,6 +3,9 @@ package com.correportuvida.model.base;
 public class TimeLapse {
 	
 	public static final String SECONDS = "seconds"; 
+	public static final String HOUR = "hour";
+	
+	public static final TimeLapse ONE_HOUR = new TimeLapse(1, HOUR);
 	
 	private final int _lapse;
 	private final String _unit;

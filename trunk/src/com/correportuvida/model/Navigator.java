@@ -5,11 +5,15 @@ import java.util.ArrayList;
 import android.graphics.Color;
 import android.location.Location;
 
+import com.correportuvida.R;
+import com.correportuvida.model.base.Distance;
 import com.correportuvida.model.base.TimeLapse;
 import com.correportuvida.model.base.Velocity;
 import com.correportuvida.model.interfaces.Reportable;
 import com.correportuvida.services.GoogleMapsService;
 import com.correportuvida.util.HexColor;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -38,8 +42,8 @@ public class Navigator {
 	
 	public Velocity getVelocity()
 	{
-		//TODO: implementar
-		return null;
+		float speed = getPosition().getSpeed();
+		return new Velocity(new Distance(speed, Distance.METERS), new TimeLapse(1,TimeLapse.HOUR));
 	}
 	
 	public Location getPosition()
@@ -75,9 +79,6 @@ public class Navigator {
   		}
   		currentLocation = location;
   		
-  		updateDistanceTraveled();
-  		updateCurrentSpeed();
-    	
 	}
 	
 	private void drawPrimaryLinePath( ArrayList<LatLng> locationsToDraw )
@@ -103,4 +104,8 @@ public class Navigator {
         //googleMap.addPolyline( options );
         _googleMapsService.addPolyLine(options);
     }
+	
+	private BitmapDescriptor getCorrePorTuVidaIcon() {
+		return BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher);
+	}
 }
