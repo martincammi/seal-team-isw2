@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.correportuvida.controllers.RunningController;
 import com.correportuvida.model.base.Distance;
+import com.correportuvida.model.base.RhythmStatus;
 import com.correportuvida.model.base.TimeLapse;
 import com.correportuvida.model.base.Velocity;
 import com.correportuvida.model.interfaces.NotifyPhaseChange;
@@ -28,6 +29,8 @@ public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange 
 	private final SportsDoctor _doctor;
 	private Map<String, Plan> _plans = new HashMap<String, Plan>();
 	private NavigatorState _navigatorState;
+	private Phase _currentPhase;
+	private RhythmStatus rhythmStatus = new RhythmStatus();
 	
 	
 	public static Trainer createInitialInstance(SportsDoctor sportDoctor) {
@@ -83,6 +86,8 @@ public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange 
 	public void startTraining(Training training, Navigator navigator){
 		
 		Phase firstPhase = training.getPhases().get(0);
+		_currentPhase = firstPhase; 
+
 		TimeLapse phaseLapse = firstPhase.getTimeLapse();
 		_phaseTimeKeeper = new TimeKeeper(new TimeKeeperPhaseChangeNotice(this), phaseLapse);
 		
@@ -96,7 +101,11 @@ public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange 
 	public void cancelTraining(){
 		_navigatorState.stopUpdating();
 		_navigatorState = new StoppedNavigator();
-		
+		_currentPhase = null;
+	}
+	
+	public String getRhythmStatus(){
+		return rhythmStatus.getRhythm(_currentPhase.getMinSpeed(), _currentPhase.getMaxSpeed(), getCurrentVelocity());
 	}
 	
 	@Override
