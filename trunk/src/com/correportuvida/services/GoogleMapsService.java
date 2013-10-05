@@ -28,7 +28,6 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 /**
  * Service to interact with the google maps.
- * @author martincammi
  *
  */
 public class GoogleMapsService {

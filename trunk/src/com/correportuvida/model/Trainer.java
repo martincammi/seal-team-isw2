@@ -82,10 +82,11 @@ public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange 
 	
 	public void startTraining(Training training, Navigator navigator){
 		
-		TimeLapse phaseLapse = new TimeLapse(1, TimeLapse.SECONDS); //TODO: valores de prueba para empezar
+		Phase firstPhase = training.getPhases().get(0);
+		TimeLapse phaseLapse = firstPhase.getTimeLapse();
 		_phaseTimeKeeper = new TimeKeeper(new TimeKeeperPhaseChangeNotice(this), phaseLapse);
 		
-		TimeLapse positionVelocityLapse = new TimeLapse(3, TimeLapse.SECONDS);
+		TimeLapse positionVelocityLapse = new TimeLapse(10, TimeLapse.SECONDS); //TODO: Set depending on memory consumption
 		navigator.start(new TimeKeeperPositionVelocityNotice(this), positionVelocityLapse);
 		
 		_navigatorState = new ActiveNavigator(navigator);
@@ -99,6 +100,7 @@ public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange 
 	@Override
 	public void notifyPhaseChanged() {
 		_controller.notifyPhaseChanged(this);
+		//TODO: update de la fase
 	}
 
 	@Override
@@ -112,5 +114,9 @@ public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange 
 	public Velocity getCurrentVelocity()
 	{
 		return _navigatorState.getCurrentSpeed();
+	}
+
+	public Phase getCurrentPhase() {
+		return Phase.getDummyPhase();
 	}
 }

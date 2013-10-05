@@ -1,7 +1,5 @@
 package com.correportuvida.controllers;
 
-import java.text.DecimalFormat;
-
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -11,7 +9,10 @@ import android.widget.Toast;
 
 import com.correportuvida.R;
 import com.correportuvida.activities.TrainingListActivity;
+import com.correportuvida.adapters.PhaseAdapter;
+import com.correportuvida.adapters.VelocityAdapter;
 import com.correportuvida.model.Navigator;
+import com.correportuvida.model.Phase;
 import com.correportuvida.model.Trainer;
 import com.correportuvida.model.base.Velocity;
 import com.correportuvida.model.training.Training;
@@ -62,14 +63,14 @@ public  class RunningController extends Controller {
 	
 	public void notifyPositionVelocityChanged(Trainer trainer) {
 		Velocity velocity = trainer.getCurrentVelocity();
-		
 		TextView valorDistancia = (TextView) getActivity().findViewById(R.id.valueDistanceTraveled);
-		valorDistancia.setText(new DecimalFormat("##.##").format(velocity.getValue()) + velocity.getUnit());
+		valorDistancia.setText((new VelocityAdapter(velocity)).toString());
 	}
 
 	public void notifyPhaseChanged(Trainer trainer) {
-		// TODO Auto-generated method stub
-		
+		Phase currentPhase = trainer.getCurrentPhase();
+		TextView phaseValue = (TextView) getActivity().findViewById(R.id.valueFase);
+		phaseValue.setText((new PhaseAdapter(currentPhase)).toString());
 	}
 
 	

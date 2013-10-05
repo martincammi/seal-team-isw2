@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.location.Location;
 
 import com.correportuvida.model.Navigator;
+import com.correportuvida.model.Phase;
 import com.correportuvida.model.base.Distance;
 import com.correportuvida.model.base.Velocity;
 import com.correportuvida.model.timekeeper.TimeKeeperPositionVelocityNotice;
