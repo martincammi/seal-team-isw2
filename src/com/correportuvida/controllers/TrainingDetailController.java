@@ -1,5 +1,9 @@
 package com.correportuvida.controllers;
 
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
+
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,6 +17,9 @@ import com.correportuvida.model.training.Training;
 
 public class TrainingDetailController extends Controller {
 
+	private String planName;
+	private String trainingName;
+	
 	public TrainingDetailController(TrainingDetailActivity activity){
 		super(activity);
 	}
@@ -20,8 +27,8 @@ public class TrainingDetailController extends Controller {
 	@Override
 	public void updateView() {
 		
-		String planName = (String) getActivity().getIntent().getSerializableExtra(PlansListActivity.PLAN_NAME);
-		String trainingName = (String) getActivity().getIntent().getSerializableExtra(TrainingListActivity.TRAINING_NAME);
+		planName = (String) getActivity().getIntent().getSerializableExtra(PlansListActivity.PLAN_NAME);
+		trainingName = (String) getActivity().getIntent().getSerializableExtra(TrainingListActivity.TRAINING_NAME);
 		
 		Training training = Trainer.getInstance().getTraining(planName, trainingName);
 		
@@ -35,7 +42,13 @@ public class TrainingDetailController extends Controller {
 		
 		buttonStart.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-            	goToActivity(RunningActivity.class);
+            
+            Map<String, Serializable> parameters = new HashMap<String, Serializable>(); 
+            parameters.put(PlansListActivity.PLAN_NAME, planName);
+            parameters.put(TrainingListActivity.TRAINING_NAME, trainingName);
+            
+            goToActivity(RunningActivity.class, parameters);
+            
             }
         });
 		

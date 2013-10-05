@@ -33,7 +33,6 @@ public class RunningActivity extends FragmentActivity /*implements LocationListe
 		//Sets Controller to Trainer
 		_controller = new RunningController(this);
 		_controller.updateView();
-		Trainer.getInstance().setController(_controller);
 
 		
 		initVariablesAndListeners();
