@@ -17,20 +17,25 @@ import com.correportuvida.model.training.Training;
 
 public class TrainingDetailController extends Controller {
 
-	private String planName;
-	private String trainingName;
+	private String _planName;
+	private String _trainingName;
 	
 	public TrainingDetailController(TrainingDetailActivity activity){
 		super(activity);
 	}
 
 	@Override
+	public void buttonBackPressed() {
+		goToActivity(TrainingListActivity.class, PlansListActivity.PLAN_NAME, _planName);
+	}
+	
+	@Override
 	public void updateView() {
 		
-		planName = (String) getActivity().getIntent().getSerializableExtra(PlansListActivity.PLAN_NAME);
-		trainingName = (String) getActivity().getIntent().getSerializableExtra(TrainingListActivity.TRAINING_NAME);
+		_planName = (String) getActivity().getIntent().getSerializableExtra(PlansListActivity.PLAN_NAME);
+		_trainingName = (String) getActivity().getIntent().getSerializableExtra(TrainingListActivity.TRAINING_NAME);
 		
-		Training training = Trainer.getInstance().getTraining(planName, trainingName);
+		Training training = Trainer.getInstance().getTraining(_planName, _trainingName);
 		
 		TextView valuePlanName = (TextView) getActivity().findViewById(R.id.valueNombrePlan);
 		valuePlanName.setText(training.getPlan().getName());
@@ -44,14 +49,12 @@ public class TrainingDetailController extends Controller {
             public void onClick(View v) {
             
             Map<String, Serializable> parameters = new HashMap<String, Serializable>(); 
-            parameters.put(PlansListActivity.PLAN_NAME, planName);
-            parameters.put(TrainingListActivity.TRAINING_NAME, trainingName);
+            parameters.put(PlansListActivity.PLAN_NAME, _planName);
+            parameters.put(TrainingListActivity.TRAINING_NAME, _trainingName);
             
             goToActivity(RunningActivity.class, parameters);
             
             }
         });
-		
 	}
-	
 }

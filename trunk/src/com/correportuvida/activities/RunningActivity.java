@@ -9,12 +9,13 @@ import android.view.Menu;
 import android.view.View;
 
 import com.correportuvida.R;
+import com.correportuvida.controllers.Controller;
 import com.correportuvida.controllers.RunningController;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class RunningActivity extends FragmentActivity  {
 	
-	private RunningController _controller;
+	private Controller _controller;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class RunningActivity extends FragmentActivity  {
 	@Override
 	public void onBackPressed()
 	{
-		_controller.backButtonClicked();
+		_controller.buttonBackPressed();
 	}
 	 
 	@Override

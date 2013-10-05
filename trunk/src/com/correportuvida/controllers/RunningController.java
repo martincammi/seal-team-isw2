@@ -55,6 +55,13 @@ public  class RunningController extends Controller {
 		
 	}
 
+	@Override
+	public void buttonBackPressed()
+	{
+		Trainer.getInstance().cancelTraining();
+		goToActivity(TrainingListActivity.class, PlansListActivity.PLAN_NAME, _planName);
+	}
+	
 	private Navigator getNavigator() throws Exception {
 		GoogleMapsService googleMapService = new GoogleMapsService(getActivity().getBaseContext(), (FragmentActivity)getActivity(), ((FragmentActivity)getActivity()).getSupportFragmentManager(), R.id.map);
 		Navigator navigator = new Navigator(googleMapService, getActivity());
@@ -62,20 +69,14 @@ public  class RunningController extends Controller {
 	}
 	
 	private void addButtonCancelBehaviour() {
-		Button buttonCancel = (Button) getActivity().findViewById(R.id.button_cancel);
+		TextView buttonCancel = (TextView) getActivity().findViewById(R.id.button_cancel);
 		buttonCancel.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				backButtonClicked();
+				buttonBackPressed();
 			}
 		});
 	}
 
-	public void backButtonClicked()
-	{
-		Trainer.getInstance().cancelTraining();
-		goToActivity(TrainingListActivity.class, PlansListActivity.PLAN_NAME, _planName);
-	}
-	
 	public void notifyPositionVelocityChanged(Trainer trainer) {
 		updateVelocity(trainer);
 		updateDistanceTraveled(trainer);
@@ -115,4 +116,5 @@ public  class RunningController extends Controller {
 		TextView phaseValue = (TextView) getActivity().findViewById(R.id.valueFase);
 		phaseValue.setText((new PhaseAdapter(currentPhase)).toString());
 	}
+
 }

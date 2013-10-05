@@ -3,14 +3,13 @@
 
     <string name="action_search">Search</string>
     <string name="action_settings">Settings</string>
-    <string name="app_name">Corre Por Tu Vida</string>
+    <string name="app_name">Corre por tu vida</string>
     <string name="dummy_button">Empty button</string>
     <string name="dummy_content">List Of plans</string>
-    <string name="title_activity_training">TrainingActivity</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_training">Entrenamientos</string>
 
     <!-- DetallePlanActivity -->
-    <string name="title_activity_detalle_plan">DetallePlanActivity</string>
+    <string name="title_activity_detalle_plan">Planes</string>
     <string name="label_fase">Fase</string>
     <string name="value_fase">1</string>
     <string name="title_training">Entrenamiento recreativo</string>
@@ -20,7 +19,7 @@
     <string name="value_velocidad_alcanzar">5 Km/h</string>
     <string name="label_cambio_velocidad">Cambio de velocidad</string>
     <string name="value_cambio_velocidad">OK</string>
-    <string name="title_activity_running">RunningActivity</string>
+    <string name="title_activity_running">Detalle entrenamiento</string>
 	
     <!-- RunningActivity -->
     <string name="button_cancel">Parar</string>

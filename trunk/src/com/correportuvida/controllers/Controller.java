@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.correportuvida.activities.TrainingListActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 
@@ -20,7 +22,8 @@ public abstract class Controller {
 	}
 	
 	public abstract void updateView();
-	
+	public abstract void buttonBackPressed();
+
 	public void goToActivity(Class activityClass){
 		goToActivity(activityClass, new HashMap<String, Serializable>());
 	}
@@ -42,7 +45,4 @@ public abstract class Controller {
 		
     	getActivity().startActivity(intent);
 	}
-	
-
-	
 }
