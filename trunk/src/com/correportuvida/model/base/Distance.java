@@ -16,7 +16,7 @@ public class Distance {
 		_value = value;
 		_unit = unit;
 	}
-
+	
 	public float getValue() {
 		return _value;
 	}

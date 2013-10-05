@@ -73,7 +73,7 @@ public class RunningActivity extends FragmentActivity /*implements LocationListe
 	}
 
 	private void setCurrentSpeed(Velocity velocity) {
-		TextView valorDistancia = (TextView) findViewById(R.id.valueDistanceTraveled);
+		//TextView valorDistancia = (TextView) findViewById(R.id.valueDistanceTraveled);
 		//updateCurrentSpeed
 	}
 

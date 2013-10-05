@@ -13,7 +13,7 @@ public abstract class NavigatorState {
 	
 	public abstract void updateCurrentLocation();
 	
-	public abstract Velocity getCurrentSpeed();
+	public abstract Velocity getCurrentVelocity();
 	
 	public abstract Distance getDistanceTraveled();
 }

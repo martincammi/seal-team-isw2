@@ -24,7 +24,7 @@ public class StoppedNavigator extends NavigatorState {
 	}
 
 	@Override
-	public Velocity getCurrentSpeed() {
+	public Velocity getCurrentVelocity() {
 		// TODO Auto-generated method stub
 		return null;
 	}
