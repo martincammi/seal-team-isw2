@@ -2,20 +2,24 @@ package com.correportuvida.model.timekeeper;
 
 import com.correportuvida.model.interfaces.*;
 
-public class TimeKeeperPositionVelocityNotice implements Reportable{
+public class TimeKeeperPositionVelocityNotice implements Reportable {
 	/*
 	 * Adapter
 	 */
-	private final NotifyPhaseChange _notified;
+	private final NotifyPositionVelocityChange _notified;
 	
-	public TimeKeeperPositionVelocityNotice(NotifyPhaseChange avisableCambioFase)
+	public TimeKeeperPositionVelocityNotice(NotifyPositionVelocityChange avisableCambioPosicionVelocidad)
 	{
-		_notified = avisableCambioFase;
+		_notified = avisableCambioPosicionVelocidad;
 	}
 	
 	@Override
 	public void report() {
-		_notified.notifyPhaseChanged();	
+		_notified.notifyPositionVelocityChanged();	
 	}
+	
+//	public void report(Location location, Velocity velocity){
+//		
+//	}
 	
 }
