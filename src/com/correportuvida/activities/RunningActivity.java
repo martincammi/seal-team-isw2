@@ -1,35 +1,23 @@
 package com.correportuvida.activities;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-
 import android.annotation.TargetApi;
 import android.content.Intent;
-import android.graphics.Color;
-import android.location.Location;
-import android.location.LocationListener;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.correportuvida.R;
-import com.correportuvida.controllers.Controller;
 import com.correportuvida.controllers.RunningController;
 import com.correportuvida.model.Trainer;
-import com.correportuvida.services.GoogleMapsService;
-import com.correportuvida.util.HexColor;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.PolylineOptions;
+import com.correportuvida.model.base.Velocity;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class RunningActivity extends FragmentActivity /*implements LocationListener*/  {
+	
+	private RunningController _controller;
 	
 	//private Marker currentMarker;
 	//private Location currentLocation;
@@ -41,9 +29,12 @@ public class RunningActivity extends FragmentActivity /*implements LocationListe
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_running);
-		
-		Controller controller = new RunningController(this);
-		controller.updateView();
+
+		//Sets Controller to Trainer
+		_controller = new RunningController(this);
+		_controller.updateView();
+		Trainer.getInstance().setController(_controller);
+
 		
 		initVariablesAndListeners();
 		
@@ -82,7 +73,7 @@ public class RunningActivity extends FragmentActivity /*implements LocationListe
 		
 	}
 
-	private void updateCurrentSpeed() {
+	private void setCurrentSpeed(Velocity velocity) {
 		TextView valorDistancia = (TextView) findViewById(R.id.valueDistanceTraveled);
 		//updateCurrentSpeed
 	}

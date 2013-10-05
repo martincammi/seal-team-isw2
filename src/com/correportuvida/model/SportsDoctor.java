@@ -37,19 +37,19 @@ public class SportsDoctor {
 	
 	public Training createVelocityTraining(RunnerProfile profile, RunnerObjective objective, RunnerAvailability availability, RunnerState state) {
 		List<Phase> phases = new ArrayList<Phase>();
-		phases.add(new Phase("Fase 1", new TimeLapse(3600, TimeLapse.SECONDS), new Velocity(Distance.FiveKM, TimeLapse.ONE_HOUR), new Velocity(Distance.TwoKM, TimeLapse.ONE_HOUR),1));
+		phases.add(Phase.getDummyPhase());
 		return new Training("Velocidad", phases);
 	}
 
 	private Training createFullTraining(RunnerProfile profile, RunnerObjective objective, RunnerAvailability availability, RunnerState state) {
 		List<Phase> phases = new ArrayList<Phase>();
-		phases.add(new Phase("Fase 1", new TimeLapse(3600, TimeLapse.SECONDS), new Velocity(Distance.FiveKM, TimeLapse.ONE_HOUR), new Velocity(Distance.TwoKM, TimeLapse.ONE_HOUR), 1));
+		phases.add(Phase.getDummyPhase());
 		return new Training("De Fondo", phases);
 	}
 
 	private Training createRecreativeTraining(RunnerProfile profile, RunnerObjective objective, RunnerAvailability availability, RunnerState state) {
 		List<Phase> phases = new ArrayList<Phase>();
-		phases.add(new Phase("Fase 1", new TimeLapse(3600, TimeLapse.SECONDS), new Velocity(Distance.FiveKM, TimeLapse.ONE_HOUR), new Velocity(Distance.TwoKM, TimeLapse.ONE_HOUR), 1));
+		phases.add(Phase.getDummyPhase());
 		return new Training("Recreativo", phases);
 	}
 }
