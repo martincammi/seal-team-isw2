@@ -51,7 +51,7 @@ public  class RunningController extends Controller {
 
 	private Navigator getNavigator() throws Exception {
 		GoogleMapsService googleMapService = new GoogleMapsService(getActivity().getBaseContext(), (FragmentActivity)getActivity(), ((FragmentActivity)getActivity()).getSupportFragmentManager(), R.id.map);
-		Navigator navigator = new Navigator(googleMapService);
+		Navigator navigator = new Navigator(googleMapService, getActivity());
 		return navigator;
 	}
 	
