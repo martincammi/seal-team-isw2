@@ -69,23 +69,23 @@ public class GoogleMapsService {
 		  return googleMap != null;
 	}
 	
-	public Location updateCurrentLocation(){
-		
-		googleMap.setMyLocationEnabled(true);
-		
-		LocationManager locationManager = getLocationManager();
-    	
-    	Criteria criteria = new Criteria();
-    	
-    	String provider = locationManager.getBestProvider(criteria, true);
-    	
-    	Location location = locationManager.getLastKnownLocation(provider);
-    
-    	currentLocation = location;
-    	
-    	return location;
-	}
-	
+//	public Location updateCurrentLocation(){
+//		
+//		googleMap.setMyLocationEnabled(true);
+//		
+//		LocationManager locationManager = getLocationManager();
+//    	
+//    	Criteria criteria = new Criteria();
+//    	
+//    	String provider = locationManager.getBestProvider(criteria, true);
+//    	
+//    	Location location = locationManager.getLastKnownLocation(provider);
+//    
+//    	currentLocation = location;
+//    	
+//    	return location;
+//	}
+//	
 	
 	public Location getCurrentLocation() {
 		return currentLocation;
@@ -100,6 +100,8 @@ public class GoogleMapsService {
 			
 			@Override
 			public void onLocationChanged(Location location) {
+				currentLocation = location;
+				System.out.println("Speed: " + location.getSpeed());
 				reportable.report();
 			}
 			

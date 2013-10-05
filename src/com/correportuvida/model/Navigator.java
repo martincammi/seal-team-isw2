@@ -46,14 +46,14 @@ public class Navigator {
 	public Velocity getVelocity()
 	{
 		float speed = getPosition().getSpeed();
-		return new Velocity(new Distance(speed, Distance.METERS), new TimeLapse(1,TimeLapse.HOUR));
+		return new Velocity(new Distance(speed, Distance.METERS), new TimeLapse(1,TimeLapse.SECONDS));
 	}
 	
 	public Location getPosition()
 	{
 ////		_activity.runOnUiThread(new Runnable(){
 ////		    public void run() {
-		    	_googleMapsService.updateCurrentLocation();
+		    	//_googleMapsService.updateCurrentLocation();
 //		    }
 //		 });
 //		try {
