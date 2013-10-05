@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.location.Location;
 
 import com.correportuvida.R;
+import com.correportuvida.adapters.VelocityAdapter;
 import com.correportuvida.model.base.Distance;
 import com.correportuvida.model.base.TimeLapse;
 import com.correportuvida.model.base.Velocity;
@@ -27,12 +28,14 @@ public class Navigator {
 	private GoogleMapsService _googleMapsService;
 	private Marker currentMarker;
 	private Location currentLocation;
-	private float _distance;
+	private float _distance = 0;
 	private Activity _activity;
+	private Velocity currentVelocity;
 	
 	public Navigator(GoogleMapsService googleMapsService, Activity activity) throws Exception{
 		_googleMapsService = googleMapsService;
 		_activity = activity;
+		
 		if(!_googleMapsService.servicesConnected()){
 			  throw new Exception("The Google map is not correclty initialized");
 		}
@@ -44,8 +47,9 @@ public class Navigator {
 	
 	public Velocity getVelocity()
 	{
-		float speed = getPosition().getSpeed();
-		return new Velocity(new Distance(speed, Distance.METERS), new TimeLapse(1,TimeLapse.SECONDS));
+//		float speed = getPosition().getSpeed();
+//		return new Velocity(new Distance(speed, Distance.METERS), new TimeLapse(1,TimeLapse.SECONDS));
+		return currentVelocity;
 	}
 	
 	public Location getPosition()
@@ -90,11 +94,23 @@ public class Navigator {
 		
 		          //googleMapService.moveToPositionInGoogleMapWithEffect(currentMarker);
 		          _googleMapsService.moveToPositionInGoogleMap(currentMarker);
-		          
+		        
+		        float lastDistance = 0; 
 		  		if (currentLocation != null){
-		  			_distance += location.distanceTo(currentLocation);
+		  			lastDistance = location.distanceTo(currentLocation); 
+		  			_distance += lastDistance;
 		  		}
 		  		currentLocation = location;
+		  		
+		  		int currentTimeInSeconds = _googleMapsService.getTimeLapseForUpdate().getLapse() / 1000;
+		  		
+		  		TimeLapse currentTimeLapseInSeconds = new TimeLapse(currentTimeInSeconds, TimeLapse.SECONDS);
+		  		
+		  		currentVelocity = new Velocity(new Distance(lastDistance, Distance.METERS), currentTimeLapseInSeconds);
+		  		
+		  		System.out.println("LastDistance: " + lastDistance);
+		  		System.out.println("Seconds: " + currentTimeInSeconds);
+		  		System.out.println("Speed: " + new VelocityAdapter(currentVelocity).toString());
   		
 //		    }
 //		 });
