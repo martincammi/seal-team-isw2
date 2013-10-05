@@ -16,10 +16,5 @@ public class TimeKeeperPositionVelocityNotice implements Reportable {
 	@Override
 	public void report() {
 		_notified.notifyPositionVelocityChanged();	
-	}
-	
-//	public void report(Location location, Velocity velocity){
-//		
-//	}
-	
+	}	
 }

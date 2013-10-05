@@ -1,12 +1,12 @@
 package com.correportuvida.model.runner;
 
-import com.correportuvida.model.base.WeeklyFrecuence;
+import com.correportuvida.model.base.WeeklyFrequence;
 
 public class RunnerAvailability {
 	
-	private final WeeklyFrecuence _frecuence;
+	private final WeeklyFrequence _frecuence;
 	
-	public RunnerAvailability(WeeklyFrecuence frecuence)
+	public RunnerAvailability(WeeklyFrequence frecuence)
 	{
 		_frecuence = frecuence;
 	}

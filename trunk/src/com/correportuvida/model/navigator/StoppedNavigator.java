@@ -2,11 +2,8 @@ package com.correportuvida.model.navigator;
 
 import android.location.Location;
 
-import com.correportuvida.model.Navigator;
-import com.correportuvida.model.Phase;
 import com.correportuvida.model.base.Distance;
 import com.correportuvida.model.base.Velocity;
-
 
 public class StoppedNavigator extends NavigatorState {
 
@@ -19,25 +16,25 @@ public class StoppedNavigator extends NavigatorState {
 
 	@Override
 	public void updateCurrentLocation() {
-		// TODO Auto-generated method stub
+		// TODO ON NEXT SPRINT
 		
 	}
 
 	@Override
 	public Velocity getCurrentVelocity() {
-		// TODO Auto-generated method stub
+		// TODO ON NEXT SPRINT
 		return null;
 	}
 
 	@Override
 	public Distance getDistanceTraveled() {
-		// TODO Auto-generated method stub
+		// TODO ON NEXT SPRINT
 		return null;
 	}
 
 	@Override
 	public void stopUpdating() {
-		// TODO Auto-generated method stub
+		// TODO ON NEXT SPRINT
 		
 	}
 }

@@ -1,7 +1,7 @@
 package com.correportuvida.model.runner;
 
 import com.correportuvida.model.base.Distance;
-import com.correportuvida.model.base.WeeklyFrecuence;
+import com.correportuvida.model.base.WeeklyFrequence;
 
 public class RunnerBuilder {
 	public static RunnerProfile buildDefaultProfile()
@@ -17,10 +17,10 @@ public class RunnerBuilder {
 	
 	public static RunnerAvailability buildDefaultAvailability(){
 		int timesAWeek = 2;
-		return new RunnerAvailability(new WeeklyFrecuence(timesAWeek));
+		return new RunnerAvailability(new WeeklyFrequence(timesAWeek));
 	}
 	
 	public static RunnerState buildDefaultState(){
-		return new RunnerState("TODO", -1){};//TODO: incomplete
+		return new RunnerState("TODO", -1){};//TODO: Next Sprint
 	}
 }

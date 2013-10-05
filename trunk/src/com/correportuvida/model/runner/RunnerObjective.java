@@ -23,6 +23,4 @@ public class RunnerObjective {
 	public void setExpectedTime(TimeLapse expectedTime) {
 		this.expectedTime = expectedTime;
 	}
-
-	
 }
