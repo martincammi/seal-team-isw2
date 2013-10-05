@@ -51,25 +51,25 @@ public class Navigator {
 	
 	public Location getPosition()
 	{
-		_activity.runOnUiThread(new Runnable(){
-		    public void run() {
+////		_activity.runOnUiThread(new Runnable(){
+////		    public void run() {
 		    	_googleMapsService.updateCurrentLocation();
-		    }
-		 });
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		    }
+//		 });
+//		try {
+//			Thread.sleep(2000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		return _googleMapsService.getCurrentLocation();
 	}
 	
 	public void updatePosition(){
 		
 		
-		_activity.runOnUiThread(new Runnable(){
-		    public void run() {
+//		_activity.runOnUiThread(new Runnable(){
+//		    public void run() {
 		    
 		    	Location location = getPosition();
 		
@@ -97,8 +97,8 @@ public class Navigator {
 		  		}
 		  		currentLocation = location;
   		
-		    }
-		 });
+//		    }
+//		 });
   		
 	}
 	

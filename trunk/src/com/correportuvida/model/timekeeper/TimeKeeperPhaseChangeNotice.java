@@ -6,16 +6,16 @@ public class TimeKeeperPhaseChangeNotice implements Reportable{
 	/*
 	 * Adapter
 	 */
-	private final NotifyPositionVelocityChange _notified;
+	private final NotifyPhaseChange _notified;
 	
-	public TimeKeeperPhaseChangeNotice(NotifyPositionVelocityChange avisableCambioPosicionVelocidad)
+	public TimeKeeperPhaseChangeNotice(NotifyPhaseChange avisableCambioFase)
 	{
-		_notified = avisableCambioPosicionVelocidad;
+		_notified = avisableCambioFase;
 	}
 	
 	@Override
 	public void report() {
-		_notified.notifyPositionVelocityChanged();
+		_notified.notifyPhaseChanged();
 	}
 
 }
