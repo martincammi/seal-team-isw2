@@ -39,4 +39,9 @@ public class ActiveNavigator extends NavigatorState {
 	public Distance getDistanceTraveled() {
 		return _navigator.getDistanceTraveled();
 	}
+
+	@Override
+	public void stopUpdating() {
+		_navigator.stopNavigator();
+	}
 }

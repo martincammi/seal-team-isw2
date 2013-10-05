@@ -12,7 +12,7 @@ import com.correportuvida.R;
 import com.correportuvida.controllers.RunningController;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class RunningActivity extends FragmentActivity /*implements LocationListener*/  {
+public class RunningActivity extends FragmentActivity  {
 	
 	private RunningController _controller;
 	
@@ -27,13 +27,12 @@ public class RunningActivity extends FragmentActivity /*implements LocationListe
 
 	}
 
-	//TODO: refactor, codigo duplicado
-	 public void goToTrainingDetailActivity(View view) {
-    	Intent intent = new Intent(this, TrainingDetailActivity.class);
-    	startActivity(intent);
-	    	
-    }
-
+	@Override
+	public void onBackPressed()
+	{
+		_controller.backButtonClicked();
+	}
+	 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
