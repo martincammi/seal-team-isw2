@@ -47,74 +47,56 @@ public class Navigator {
 	
 	public Velocity getVelocity()
 	{
-//		float speed = getPosition().getSpeed();
-//		return new Velocity(new Distance(speed, Distance.METERS), new TimeLapse(1,TimeLapse.SECONDS));
 		return currentVelocity;
 	}
 	
 	public Location getPosition()
 	{
-////		_activity.runOnUiThread(new Runnable(){
-////		    public void run() {
-		    	//_googleMapsService.updateCurrentLocation();
-//		    }
-//		 });
-//		try {
-//			Thread.sleep(2000);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		return _googleMapsService.getCurrentLocation();
+	}
+	
+	public Distance getDistanceTraveled() {
+		return new Distance(_distance, Distance.METERS);
+	}
+
+	public void stopNavigator() {
+		_googleMapsService.stopMapRefreshing();
 	}
 	
 	public void updatePosition(){
 		
-		
-//		_activity.runOnUiThread(new Runnable(){
-//		    public void run() {
-		    
-		    	Location location = getPosition();
-		
-				ArrayList<LatLng> positions = new ArrayList<LatLng>();
-		    	if (currentMarker != null) {
-		    		positions.add(currentMarker.getPosition());
-		    		currentMarker.remove();
-		    	}
-		    	
-		    	  LatLng coordinates = GoogleMapsService.getLatLng(location);
-		          
-		          positions.add(coordinates);
-		          
-		          if (positions.size() > 1){
-		  			drawPrimaryLinePath(positions);
-		  		}
-		          
-		          currentMarker = _googleMapsService.drawMarker(coordinates, "Exactas is cool", getCorrePorTuVidaIcon(), "Posicion actual");
-		
-		          //googleMapService.moveToPositionInGoogleMapWithEffect(currentMarker);
-		          _googleMapsService.moveToPositionInGoogleMap(currentMarker);
-		        
-		        float lastDistance = 0; 
-		  		if (currentLocation != null){
-		  			lastDistance = location.distanceTo(currentLocation); 
-		  			_distance += lastDistance;
-		  		}
-		  		currentLocation = location;
-		  		
-		  		int currentTimeInSeconds = _googleMapsService.getTimeLapseForUpdate().getLapse() / 1000;
-		  		
-		  		TimeLapse currentTimeLapseInSeconds = new TimeLapse(currentTimeInSeconds, TimeLapse.SECONDS);
-		  		
-		  		currentVelocity = new Velocity(new Distance(lastDistance, Distance.METERS), currentTimeLapseInSeconds);
-		  		
-		  		System.out.println("LastDistance: " + lastDistance);
-		  		System.out.println("Seconds: " + currentTimeInSeconds);
-		  		System.out.println("Speed: " + new VelocityAdapter(currentVelocity).toString());
+    	Location location = getPosition();
+
+		ArrayList<LatLng> positions = new ArrayList<LatLng>();
+    	if (currentMarker != null) {
+    		positions.add(currentMarker.getPosition());
+    		currentMarker.remove();
+    	}
+    	
+    	  LatLng coordinates = GoogleMapsService.getLatLng(location);
+          
+          positions.add(coordinates);
+          
+          if (positions.size() > 1){
+  			drawPrimaryLinePath(positions);
+  		}
+        
+        currentMarker = _googleMapsService.drawMarker(coordinates, "Exactas is cool", getCorrePorTuVidaIcon(), "Posicion actual");
+
+        _googleMapsService.moveToPositionInGoogleMap(currentMarker);
+        
+        float lastDistance = 0; 
+  		if (currentLocation != null){
+  			lastDistance = location.distanceTo(currentLocation); 
+  			_distance += lastDistance;
+  		}
+  		currentLocation = location;
   		
-//		    }
-//		 });
+  		int currentTimeInSeconds = _googleMapsService.getTimeLapseForUpdate().getLapse() / 1000;
   		
+  		TimeLapse currentTimeLapseInSeconds = new TimeLapse(currentTimeInSeconds, TimeLapse.SECONDS);
+  		
+  		currentVelocity = new Velocity(new Distance(lastDistance, Distance.METERS), currentTimeLapseInSeconds);
 	}
 	
 	private void drawPrimaryLinePath( ArrayList<LatLng> locationsToDraw )
@@ -145,7 +127,4 @@ public class Navigator {
 		return BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher);
 	}
 
-	public Distance getDistanceTraveled() {
-		return new Distance(_distance, Distance.METERS);
-	}
 }

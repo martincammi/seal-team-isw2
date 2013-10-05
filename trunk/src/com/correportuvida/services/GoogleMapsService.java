@@ -39,6 +39,7 @@ public class GoogleMapsService {
 	private GoogleMap googleMap;
 	private Location currentLocation;
 	private TimeLapse timeLapseForUpdate;
+	private LocationListener _locationListener;
 	
 	public GoogleMapsService(Context context, FragmentActivity fragmentActivity, FragmentManager fragmentManager, int mapId) {
 		this.context = context;
@@ -99,7 +100,7 @@ public class GoogleMapsService {
 	
 		timeLapseForUpdate = timeLapse;
 		
-		LocationListener locationListener = new LocationListener() {
+		_locationListener = new LocationListener() {
 			
 			@Override
 			public void onLocationChanged(Location location) {
@@ -121,7 +122,7 @@ public class GoogleMapsService {
 		LocationManager locationManager = getLocationManager(); 
 		Criteria criteria = new Criteria();
 		String provider = locationManager.getBestProvider(criteria, true);
-		locationManager.requestLocationUpdates(provider, timeLapse.getLapse() , 0, locationListener);
+		locationManager.requestLocationUpdates(provider, timeLapse.getLapse() , 0, _locationListener);
 	}
 	
 	public void drawBlueMarker(LatLng latlong, String iconTitle){
@@ -213,6 +214,10 @@ public class GoogleMapsService {
 
 	public void setMapId(int mapId) {
 		this.mapId = mapId;
+	}
+
+	public void stopMapRefreshing() {
+		getLocationManager().removeUpdates(_locationListener);
 	}
 	
 	

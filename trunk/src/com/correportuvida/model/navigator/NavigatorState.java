@@ -16,4 +16,6 @@ public abstract class NavigatorState {
 	public abstract Velocity getCurrentVelocity();
 	
 	public abstract Distance getDistanceTraveled();
+
+	public abstract void stopUpdating();
 }

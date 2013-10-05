@@ -94,7 +94,7 @@ public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange 
 	}
 	
 	public void cancelTraining(){
-		//TODO: ver si el objeto sigue vivo _navigatorState.stopNavigation();
+		_navigatorState.stopUpdating();
 		_navigatorState = new StoppedNavigator();
 		
 	}

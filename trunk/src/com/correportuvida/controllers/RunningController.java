@@ -65,10 +65,15 @@ public  class RunningController extends Controller {
 		Button buttonCancel = (Button) getActivity().findViewById(R.id.button_cancel);
 		buttonCancel.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View view) {
-				Trainer.getInstance().cancelTraining();
-				goToActivity(TrainingListActivity.class, PlansListActivity.PLAN_NAME, _planName);
+				backButtonClicked();
 			}
 		});
+	}
+
+	public void backButtonClicked()
+	{
+		Trainer.getInstance().cancelTraining();
+		goToActivity(TrainingListActivity.class, PlansListActivity.PLAN_NAME, _planName);
 	}
 	
 	public void notifyPositionVelocityChanged(Trainer trainer) {

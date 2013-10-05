@@ -34,4 +34,10 @@ public class StoppedNavigator extends NavigatorState {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public void stopUpdating() {
+		// TODO Auto-generated method stub
+		
+	}
 }
