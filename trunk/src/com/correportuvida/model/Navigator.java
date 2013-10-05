@@ -2,6 +2,7 @@ package com.correportuvida.model;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.location.Location;
 
@@ -27,9 +28,11 @@ public class Navigator {
 	private Marker currentMarker;
 	private Location currentLocation;
 	private float distance = 0;
+	private Activity _activity;
 	
-	public Navigator(GoogleMapsService googleMapsService) throws Exception{
+	public Navigator(GoogleMapsService googleMapsService, Activity activity) throws Exception{
 		_googleMapsService = googleMapsService;
+		_activity = activity;
 		
 		if(!_googleMapsService.servicesConnected()){
 			  throw new Exception("The Google map is not correclty initialized");
@@ -37,7 +40,7 @@ public class Navigator {
 	}
 	
 	public void start (Reportable positionVelocityReportable, TimeLapse timeLapse){
-		_googleMapsService.updateCurrentLocation(positionVelocityReportable, timeLapse);
+		_googleMapsService.startProcessingLocation(positionVelocityReportable, timeLapse);
 	}
 	
 	public Velocity getVelocity()
@@ -48,36 +51,54 @@ public class Navigator {
 	
 	public Location getPosition()
 	{
+		_activity.runOnUiThread(new Runnable(){
+		    public void run() {
+		    	_googleMapsService.updateCurrentLocation();
+		    }
+		 });
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return _googleMapsService.getCurrentLocation();
 	}
 	
 	public void updatePosition(){
 		
-		Location location = getPosition();
 		
-		ArrayList<LatLng> positions = new ArrayList<LatLng>();
-    	if (currentMarker != null) {
-    		positions.add(currentMarker.getPosition());
-    		currentMarker.remove();
-    	}
-    	
-    	  LatLng coordinates = GoogleMapsService.getLatLng(location);
-          
-          positions.add(coordinates);
-          
-          if (positions.size() > 1){
-  			drawPrimaryLinePath(positions);
-  		}
-          
-          currentMarker = _googleMapsService.drawMarker(coordinates, "Exactas is cool", getCorrePorTuVidaIcon(), "Posicion actual");
-
-          //googleMapService.moveToPositionInGoogleMapWithEffect(currentMarker);
-          _googleMapsService.moveToPositionInGoogleMap(currentMarker);
-          
-  		if (currentLocation != null){
-  			distance += location.distanceTo(currentLocation);
-  		}
-  		currentLocation = location;
+		_activity.runOnUiThread(new Runnable(){
+		    public void run() {
+		    
+		    	Location location = getPosition();
+		
+				ArrayList<LatLng> positions = new ArrayList<LatLng>();
+		    	if (currentMarker != null) {
+		    		positions.add(currentMarker.getPosition());
+		    		currentMarker.remove();
+		    	}
+		    	
+		    	  LatLng coordinates = GoogleMapsService.getLatLng(location);
+		          
+		          positions.add(coordinates);
+		          
+		          if (positions.size() > 1){
+		  			drawPrimaryLinePath(positions);
+		  		}
+		          
+		          currentMarker = _googleMapsService.drawMarker(coordinates, "Exactas is cool", getCorrePorTuVidaIcon(), "Posicion actual");
+		
+		          //googleMapService.moveToPositionInGoogleMapWithEffect(currentMarker);
+		          _googleMapsService.moveToPositionInGoogleMap(currentMarker);
+		          
+		  		if (currentLocation != null){
+		  			distance += location.distanceTo(currentLocation);
+		  		}
+		  		currentLocation = location;
+  		
+		    }
+		 });
   		
 	}
 	

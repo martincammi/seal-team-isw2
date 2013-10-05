@@ -37,7 +37,7 @@ public class GoogleMapsService {
 	private FragmentManager fragmentManager;
 	private int mapId;
 	private GoogleMap googleMap;
-	
+	private Location currentLocation;
 	
 	public GoogleMapsService(Context context, FragmentActivity fragmentActivity, FragmentManager fragmentManager, int mapId) {
 		this.context = context;
@@ -69,7 +69,7 @@ public class GoogleMapsService {
 		  return googleMap != null;
 	}
 	
-	public Location getCurrentLocation(){
+	public Location updateCurrentLocation(){
 		
 		googleMap.setMyLocationEnabled(true);
 		
@@ -80,14 +80,21 @@ public class GoogleMapsService {
     	String provider = locationManager.getBestProvider(criteria, true);
     	
     	Location location = locationManager.getLastKnownLocation(provider);
+    
+    	currentLocation = location;
     	
     	return location;
 	}
 	
+	
+	public Location getCurrentLocation() {
+		return currentLocation;
+	}
+
 	/**
 	 * Updates the current location every 20 seconds.
 	 */
-	public void updateCurrentLocation(final Reportable reportable, TimeLapse timeLapse){
+	public void startProcessingLocation(final Reportable reportable, TimeLapse timeLapse){
 	
 		LocationListener locationListener = new LocationListener() {
 			
