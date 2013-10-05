@@ -97,6 +97,9 @@ public  class RunningController extends Controller {
 		Velocity velocity = trainer.getCurrentVelocity();
 		TextView currentVelocity = (TextView) getActivity().findViewById(R.id.valueVelocidadActual);
 		currentVelocity.setText((new VelocityAdapter(velocity)).toString());
+		
+		TextView velocityChange = (TextView) getActivity().findViewById(R.id.valueCambioVelocidad);
+		velocityChange.setText(trainer.getRhythmStatus());
 	}
 
 	public void notifyPhaseChanged(Trainer trainer) {

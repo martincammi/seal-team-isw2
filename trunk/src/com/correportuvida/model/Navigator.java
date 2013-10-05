@@ -65,38 +65,45 @@ public class Navigator {
 	
 	public void updatePosition(){
 		
-    	Location location = getPosition();
-
-		ArrayList<LatLng> positions = new ArrayList<LatLng>();
-    	if (currentMarker != null) {
-    		positions.add(currentMarker.getPosition());
-    		currentMarker.remove();
-    	}
-    	
-    	  LatLng coordinates = GoogleMapsService.getLatLng(location);
-          
-          positions.add(coordinates);
-          
-          if (positions.size() > 1){
-  			drawPrimaryLinePath(positions);
-  		}
-        
-        currentMarker = _googleMapsService.drawMarker(coordinates, "Exactas is cool", getCorrePorTuVidaIcon(), "Posicion actual");
-
-        _googleMapsService.moveToPositionInGoogleMap(currentMarker);
-        
-        float lastDistance = 0; 
-  		if (currentLocation != null){
-  			lastDistance = location.distanceTo(currentLocation); 
-  			_distance += lastDistance;
-  		}
-  		currentLocation = location;
+		
+	    	Location location = getPosition();
+	
+			ArrayList<LatLng> positions = new ArrayList<LatLng>();
+	    	if (currentMarker != null) {
+	    		positions.add(currentMarker.getPosition());
+	    		currentMarker.remove();
+	    	}
+	    	
+	    	  LatLng coordinates = GoogleMapsService.getLatLng(location);
+	          
+	          positions.add(coordinates);
+	          
+	          if (positions.size() > 1){
+	  			drawPrimaryLinePath(positions);
+	  		}
+	          
+	          currentMarker = _googleMapsService.drawMarker(coordinates, "Exactas is cool", getCorrePorTuVidaIcon(), "Posicion actual");
+	
+	          //googleMapService.moveToPositionInGoogleMapWithEffect(currentMarker);
+	          _googleMapsService.moveToPositionInGoogleMap(currentMarker);
+	        
+	        float lastDistance = 0; 
+	  		if (currentLocation != null){
+	  			lastDistance = location.distanceTo(currentLocation);
+	  			lastDistance = lastDistance < 0 ? 0 : lastDistance/1000; 
+	  			_distance += lastDistance; 
+	  		}
+	  		currentLocation = location;
+	  		
+	  		TimeLapse oneHour = new TimeLapse(1, TimeLapse.HOUR);
+	  		
+	  		int millisecondsSpent = _googleMapsService.getTimeLapseForUpdate().getLapse();
+	  		int millisecondsInHour = 1000* 60 * 60; 
+	  		float kilometersInHour = lastDistance * millisecondsInHour / millisecondsSpent;
+	  		
+	  		currentVelocity = new Velocity(new Distance(kilometersInHour, Distance.KILOMETERS), oneHour);
   		
-  		int currentTimeInSeconds = _googleMapsService.getTimeLapseForUpdate().getLapse() / 1000;
   		
-  		TimeLapse currentTimeLapseInSeconds = new TimeLapse(currentTimeInSeconds, TimeLapse.SECONDS);
-  		
-  		currentVelocity = new Velocity(new Distance(lastDistance, Distance.METERS), currentTimeLapseInSeconds);
 	}
 	
 	private void drawPrimaryLinePath( ArrayList<LatLng> locationsToDraw )
