@@ -3,9 +3,6 @@ package com.correportuvida.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.correportuvida.model.base.Distance;
-import com.correportuvida.model.base.TimeLapse;
-import com.correportuvida.model.base.Velocity;
 import com.correportuvida.model.runner.RunnerAvailability;
 import com.correportuvida.model.runner.RunnerObjective;
 import com.correportuvida.model.runner.RunnerProfile;

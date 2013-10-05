@@ -71,24 +71,6 @@ public class GoogleMapsService {
 		  return googleMap != null;
 	}
 	
-//	public Location updateCurrentLocation(){
-//		
-//		googleMap.setMyLocationEnabled(true);
-//		
-//		LocationManager locationManager = getLocationManager();
-//    	
-//    	Criteria criteria = new Criteria();
-//    	
-//    	String provider = locationManager.getBestProvider(criteria, true);
-//    	
-//    	Location location = locationManager.getLastKnownLocation(provider);
-//    
-//    	currentLocation = location;
-//    	
-//    	return location;
-//	}
-//	
-	
 	public Location getCurrentLocation() {
 		return currentLocation;
 	}
@@ -135,9 +117,6 @@ public class GoogleMapsService {
 		
 		if(latlng != null){
 			
-			//LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
-			//Marker hamburg = googleMap.addMarker(new MarkerOptions().position(HAMBURG).title("Hamburg"));
-			
 			MarkerOptions markerOptions = new MarkerOptions();
 			markerOptions.position(latlng);
 			markerOptions.snippet(snippet);
@@ -161,8 +140,6 @@ public class GoogleMapsService {
 		LatLng position = marker.getPosition();
 		googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position, 7));
         googleMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null); 
-        //TextView moveLocation = (TextView) findViewById(R.id.valueRestaurantDirection);
-        //moveLocation.setText("Latitude:" +  location.getLatitude() + ", Longitude:"+ location.getLongitude() );
 	}
 	
 	public void moveToPositionInGoogleMap(Marker marker){

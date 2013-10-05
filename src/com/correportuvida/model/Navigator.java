@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.location.Location;
 
 import com.correportuvida.R;
-import com.correportuvida.adapters.VelocityAdapter;
 import com.correportuvida.model.base.Distance;
 import com.correportuvida.model.base.TimeLapse;
 import com.correportuvida.model.base.Velocity;
@@ -19,10 +18,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.PolylineOptions;
-/* TODO:
- * encargado de pedirle a google toda la info sobre velocidad y blah
- * 
- * */
+
 public class Navigator {
 
 	private GoogleMapsService _googleMapsService;

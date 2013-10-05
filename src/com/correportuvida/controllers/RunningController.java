@@ -107,8 +107,6 @@ public  class RunningController extends Controller {
 		TextView velocityToAchieve = (TextView) getActivity().findViewById(R.id.valueVelocidadAlcanzar);
 		velocityToAchieve.setText(velocityToAchieveStr);
 		
-		
-		
 	}
 
 	public void notifyPhaseChanged(Trainer trainer) {
