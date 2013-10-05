@@ -56,7 +56,7 @@ public class Navigator {
 	}
 	
 	public Distance getDistanceTraveled() {
-		return new Distance(_distance, Distance.METERS);
+		return new Distance(_distance, Distance.KILOMETERS);
 	}
 
 	public void stopNavigator() {

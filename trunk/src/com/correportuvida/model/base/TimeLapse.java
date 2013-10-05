@@ -4,7 +4,7 @@ public class TimeLapse {
 	
 	public static final String MILISECONDS = "miliseconds";
 	public static final String SECONDS = "s"; 
-	public static final String HOUR = "hour";
+	public static final String HOUR = "h";
 	
 	public static final TimeLapse ONE_HOUR = new TimeLapse(1, HOUR);
 	
