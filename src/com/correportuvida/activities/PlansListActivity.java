@@ -13,10 +13,12 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.correportuvida.R;
 import com.correportuvida.adapters.PlanVisualAdapter;
-import com.correportuvida.controller.Controller;
+import com.correportuvida.controllers.RunningController;
+import com.correportuvida.model.Plan;
 import com.correportuvida.model.SportsDoctor;
 import com.correportuvida.model.Trainer;
 import com.correportuvida.model.runner.RunnerAvailability;
@@ -27,7 +29,8 @@ import com.correportuvida.model.runner.RunnerState;
 
 public class PlansListActivity extends ActionBarActivity {
 
-	public static final String EXTRA_MESSAGE = "com.correportuvida.activities.PlansListActivity";
+	public static String PLAN_NAME = "PlansListActivity.planName";
+	public List<Plan> plans;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +43,9 @@ public class PlansListActivity extends ActionBarActivity {
         RunnerAvailability availability = RunnerBuilder.buildDefaultAvailability();
         RunnerState state = RunnerBuilder.buildDefaultState();
 
-        Controller controller = new Controller(this);  
-
-        Trainer trainer = Trainer.createInitialInstance(new SportsDoctor(profile, objective, availability, state), controller);
+        Trainer trainer = Trainer.createInitialInstance(new SportsDoctor(profile, objective, availability, state));
+        
+        trainer.setController(new RunningController(this));
         
         List<PlanVisualAdapter> adaptedPlans = new ArrayList<PlanVisualAdapter>();
         
@@ -78,7 +81,9 @@ public class PlansListActivity extends ActionBarActivity {
     public void goToTrainingActivity(View view) {
      
     	Intent intent = new Intent(this, TrainingListActivity.class);
-    	intent.putExtra(EXTRA_MESSAGE, view.getId());
+    	String planName = ((TextView) view).getText().toString();
+    	//Plan selectedPlan = Trainer.getInstance().getPlan(planName);
+    	intent.putExtra(PLAN_NAME, planName);
     	startActivity(intent);
     	
     }

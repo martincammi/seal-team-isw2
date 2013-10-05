@@ -3,6 +3,7 @@ package com.correportuvida.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.correportuvida.model.base.Distance;
 import com.correportuvida.model.base.TimeLapse;
 import com.correportuvida.model.base.Velocity;
 import com.correportuvida.model.runner.RunnerAvailability;
@@ -36,19 +37,19 @@ public class SportsDoctor {
 	
 	public Training createVelocityTraining(RunnerProfile profile, RunnerObjective objective, RunnerAvailability availability, RunnerState state) {
 		List<Phase> phases = new ArrayList<Phase>();
-		phases.add(new Phase("Fase 1", new TimeLapse(3600, TimeLapse.SECONDS), new Velocity(5), new Velocity(2), 1));
+		phases.add(new Phase("Fase 1", new TimeLapse(3600, TimeLapse.SECONDS), new Velocity(Distance.FiveKM, TimeLapse.ONE_HOUR), new Velocity(Distance.TwoKM, TimeLapse.ONE_HOUR),1));
 		return new Training("Velocidad", phases);
 	}
 
 	private Training createFullTraining(RunnerProfile profile, RunnerObjective objective, RunnerAvailability availability, RunnerState state) {
 		List<Phase> phases = new ArrayList<Phase>();
-		phases.add(new Phase("Fase 1", new TimeLapse(3600, TimeLapse.SECONDS), new Velocity(5), new Velocity(2), 1));
+		phases.add(new Phase("Fase 1", new TimeLapse(3600, TimeLapse.SECONDS), new Velocity(Distance.FiveKM, TimeLapse.ONE_HOUR), new Velocity(Distance.TwoKM, TimeLapse.ONE_HOUR), 1));
 		return new Training("De Fondo", phases);
 	}
 
 	private Training createRecreativeTraining(RunnerProfile profile, RunnerObjective objective, RunnerAvailability availability, RunnerState state) {
 		List<Phase> phases = new ArrayList<Phase>();
-		phases.add(new Phase("Fase 1", new TimeLapse(3600, TimeLapse.SECONDS), new Velocity(5), new Velocity(2), 1));
+		phases.add(new Phase("Fase 1", new TimeLapse(3600, TimeLapse.SECONDS), new Velocity(Distance.FiveKM, TimeLapse.ONE_HOUR), new Velocity(Distance.TwoKM, TimeLapse.ONE_HOUR), 1));
 		return new Training("Recreativo", phases);
 	}
 }

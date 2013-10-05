@@ -1,16 +1,24 @@
 package com.correportuvida.model.base;
 
 public class Velocity {
-	private final int _kmXHour;
 	
-	//TODO: no se cual es la forma correcta de hacer esto
-	public Velocity(int velocityInKmByHour)
+	public static final String SECONDS = "seconds"; 
+	
+	private final Distance _distance;
+	private final TimeLapse _timeLapse;
+	
+	public Velocity(Distance distance, TimeLapse timeLapse)
 	{
-		_kmXHour = velocityInKmByHour;
+		_distance = distance;
+		_timeLapse = timeLapse;
 	}
 	
-	public int getKmXHour()
+	public float getValue()
 	{
-		return _kmXHour;
+		return _distance.getValue() / _timeLapse.getLapse();
+	}
+	
+	public String getUnit(){
+		return _distance.getUnit() + "/" + _timeLapse.getUnit();
 	}
 }

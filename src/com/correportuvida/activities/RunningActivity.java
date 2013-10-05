@@ -18,14 +18,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.correportuvida.R;
+import com.correportuvida.controllers.Controller;
+import com.correportuvida.controllers.RunningController;
 import com.correportuvida.model.Trainer;
-import com.correportuvida.model.timekeeper.TimeKeeperPositionVelocityNotice;
 import com.correportuvida.services.GoogleMapsService;
 import com.correportuvida.util.HexColor;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -33,56 +33,52 @@ public class RunningActivity extends FragmentActivity /*implements LocationListe
 	
 	//private Marker currentMarker;
 	//private Location currentLocation;
-	private float distance = 0;
-	private GoogleMapsService googleMapService;
-	private LocationListener locationListener; 
+//	private float distance = 0;
+//	private GoogleMapsService googleMapService;
+//	private LocationListener locationListener; 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_running);
 		
+		Controller controller = new RunningController(this);
+		controller.updateView();
+		
 		initVariablesAndListeners();
 		
 		//new Navigator(googleMapService, new TimeKeeperPositionVelocityNotice(this));
 		
-		
-        if(googleMapService.servicesConnected()){
-        
-        	googleMapService.updateCurrentLocation(getLocationListener());
-            Location location = googleMapService.getCurrentLocation();
- 
-            if(location != null){
-            	currentLocation = location;
-                getLocationListener().onLocationChanged(location);
-            }else{
-            	Toast.makeText( getApplicationContext(), "Location not available", Toast.LENGTH_LONG ).show();
-            }
-        }else{
-        	Toast.makeText( getApplicationContext(), "Map not available", Toast.LENGTH_SHORT ).show();
-        }
+//        if(googleMapService.servicesConnected()){
+//        
+//        	googleMapService.updateCurrentLocation(getLocationListener());
+//            Location location = googleMapService.getCurrentLocation();
+// 
+//            if(location != null){
+//            	currentLocation = location;
+//                getLocationListener().onLocationChanged(location);
+//            }else{
+//            	Toast.makeText( getApplicationContext(), "Location not available", Toast.LENGTH_LONG ).show();
+//            }
+//        }else{
+//        	Toast.makeText( getApplicationContext(), "Map not available", Toast.LENGTH_SHORT ).show();
+//        }
 
 	}
 
 	private void initVariablesAndListeners() {
-		googleMapService = new GoogleMapsService(getBaseContext(), this, getSupportFragmentManager(), R.id.map);
-		locationListener = createLocationListener();
+//		googleMapService = new GoogleMapsService(getBaseContext(), this, getSupportFragmentManager(), R.id.map);
+		//locationListener = createLocationListener();
 		
-		addButtonCancelBehaviour();
+		//addButtonCancelBehaviour();
 		updateDistanceTraveled();
 	}
 
 	private void updateDistanceTraveled() {
 		
-		TextView valorDistancia = (TextView) findViewById(R.id.valueDistanceTraveled);
-		//TODO: esto tendria que hablar con el trainer y que el trainer se comunique
-		//con el navigato para que le devuelva distance!
-		valorDistancia.setText(new DecimalFormat("##.##").format(distance/1000) + " Km");
+		//TextView valorDistancia = (TextView) findViewById(R.id.valueDistanceTraveled);
+		//valorDistancia.setText(new DecimalFormat("##.##").format(distance/1000) + " Km");
 
-//		Old Way
-//		TextView valueDistanceTraveled = (TextView) findViewById(R.id.valueDistanceTraveled);
-//		int roundedDistance = (int) Math.round(distance);
-//		valueDistanceTraveled.setText(Integer.toString(roundedDistance));
 		
 	}
 
@@ -91,16 +87,16 @@ public class RunningActivity extends FragmentActivity /*implements LocationListe
 		//updateCurrentSpeed
 	}
 
-	private void addButtonCancelBehaviour() {
-		Button buttonCancel = (Button) findViewById(R.id.button_cancel);
-		buttonCancel.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				//TODO: como referencio a la clase y no al listener!?
-				//ActivityController.OpenActivity(this, TrainingDetailActivity.class);
-				goToTrainingDetailActivity(v);
-			}
-		});
-	}
+//	private void addButtonCancelBehaviour() {
+//		Button buttonCancel = (Button) findViewById(R.id.button_cancel);
+//		buttonCancel.setOnClickListener(new View.OnClickListener() {
+//			public void onClick(View v) {
+//				//TODO: como referencio a la clase y no al listener!?
+//				//ActivityController.OpenActivity(this, TrainingDetailActivity.class);
+//				goToTrainingDetailActivity(v);
+//			}
+//		});
+//	}
 	
 	//TODO: refactor, codigo duplicado
 	 public void goToTrainingDetailActivity(View view) {
@@ -120,89 +116,89 @@ public class RunningActivity extends FragmentActivity /*implements LocationListe
 //		return locationListener;
 //	}
 	
-	public LocationListener createLocationListener(){
-		
-		return new LocationListener() {
-			
-			@Override
-		    public void onLocationChanged(Location location) {
-		    	
-		    	ArrayList<LatLng> positions = new ArrayList<LatLng>();
-		    	if (currentMarker != null) {
-		    		positions.add(currentMarker.getPosition());
-		    		currentMarker.remove();
-		    	}
-				
-		        LatLng coordinates = GoogleMapsService.getLatLng(location);
-		        
-		        positions.add(coordinates);
-		        
-		        if (positions.size() > 1){
-					drawPrimaryLinePath(positions);
-				}
-		        
-		        currentMarker = googleMapService.drawMarker(coordinates, "Exactas is cool", getCorrePorTuVidaIcon(), "Posicion actual");
-
-		        //googleMapService.moveToPositionInGoogleMapWithEffect(currentMarker);
-		        googleMapService.moveToPositionInGoogleMap(currentMarker);
-		        
-				if (currentLocation != null){
-					distance += location.distanceTo(currentLocation);
-				}
-				currentLocation = location;
-				
-				updateDistanceTraveled();
-				updateCurrentSpeed();
-		 
-		    }
-			
-			@Override
-			public void onStatusChanged(String provider, int status, Bundle extras) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			 @Override
-		    public void onProviderDisabled(String provider) {
-		    	Toast.makeText( getApplicationContext(), "Gps Disabled", Toast.LENGTH_SHORT ).show();
-		    }
-		 
-		    @Override
-		    public void onProviderEnabled(String provider) {
-		    	Toast.makeText( getApplicationContext(), "Gps Enabled", Toast.LENGTH_SHORT ).show();
-		    }
-			
-		};
-	}
+//	public LocationListener createLocationListener(){
+//		
+//		return new LocationListener() {
+//			
+//			@Override
+//		    public void onLocationChanged(Location location) {
+//		    	
+//		    	ArrayList<LatLng> positions = new ArrayList<LatLng>();
+//		    	if (currentMarker != null) {
+//		    		positions.add(currentMarker.getPosition());
+//		    		currentMarker.remove();
+//		    	}
+//				
+//		        LatLng coordinates = GoogleMapsService.getLatLng(location);
+//		        
+//		        positions.add(coordinates);
+//		        
+//		        if (positions.size() > 1){
+//					drawPrimaryLinePath(positions);
+//				}
+//		        
+//		        currentMarker = googleMapService.drawMarker(coordinates, "Exactas is cool", getCorrePorTuVidaIcon(), "Posicion actual");
+//
+//		        //googleMapService.moveToPositionInGoogleMapWithEffect(currentMarker);
+//		        googleMapService.moveToPositionInGoogleMap(currentMarker);
+//		        
+//				if (currentLocation != null){
+//					distance += location.distanceTo(currentLocation);
+//				}
+//				currentLocation = location;
+//				
+//				updateDistanceTraveled();
+//				updateCurrentSpeed();
+//		 
+//		    }
+//			
+//			@Override
+//			public void onStatusChanged(String provider, int status, Bundle extras) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//			 @Override
+//		    public void onProviderDisabled(String provider) {
+//		    	Toast.makeText( getApplicationContext(), "Gps Disabled", Toast.LENGTH_SHORT ).show();
+//		    }
+//		 
+//		    @Override
+//		    public void onProviderEnabled(String provider) {
+//		    	Toast.makeText( getApplicationContext(), "Gps Enabled", Toast.LENGTH_SHORT ).show();
+//		    }
+//			
+//		};
+//	}
 	
-    private void drawPrimaryLinePath( ArrayList<LatLng> locationsToDraw )
-    {
-        if( !googleMapService.servicesConnected()){
-            return;
-        }
-
-        if(locationsToDraw.size() < 2){
-            return;
-        }
-
-        PolylineOptions options = new PolylineOptions();
-
-        options.color( Color.parseColor(HexColor.BLUE) );
-        options.width( 5 );
-        options.visible( true );
-
-        for (LatLng locRecorded : locationsToDraw){
-            options.add(locRecorded);
-        }
-
-        //googleMap.addPolyline( options );
-        googleMapService.addPolyLine(options);
-        
-
-    }
+//    private void drawPrimaryLinePath( ArrayList<LatLng> locationsToDraw )
+//    {
+//        if( !googleMapService.servicesConnected()){
+//            return;
+//        }
+//
+//        if(locationsToDraw.size() < 2){
+//            return;
+//        }
+//
+//        PolylineOptions options = new PolylineOptions();
+//
+//        options.color( Color.parseColor(HexColor.BLUE) );
+//        options.width( 5 );
+//        options.visible( true );
+//
+//        for (LatLng locRecorded : locationsToDraw){
+//            options.add(locRecorded);
+//        }
+//
+//        //googleMap.addPolyline( options );
+//        googleMapService.addPolyLine(options);
+//        
+//
+//    }
     
-    private BitmapDescriptor getCorrePorTuVidaIcon() {
-		return BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher);
-	}
+//    private BitmapDescriptor getCorrePorTuVidaIcon() {
+//		return BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher);
+//	}
 
 }
