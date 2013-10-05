@@ -38,6 +38,7 @@ public class GoogleMapsService {
 	private int mapId;
 	private GoogleMap googleMap;
 	private Location currentLocation;
+	private TimeLapse timeLapseForUpdate;
 	
 	public GoogleMapsService(Context context, FragmentActivity fragmentActivity, FragmentManager fragmentManager, int mapId) {
 		this.context = context;
@@ -96,12 +97,13 @@ public class GoogleMapsService {
 	 */
 	public void startProcessingLocation(final Reportable reportable, TimeLapse timeLapse){
 	
+		timeLapseForUpdate = timeLapse;
+		
 		LocationListener locationListener = new LocationListener() {
 			
 			@Override
 			public void onLocationChanged(Location location) {
 				currentLocation = location;
-				System.out.println("Speed: " + location.getSpeed());
 				reportable.report();
 			}
 			
@@ -180,6 +182,11 @@ public class GoogleMapsService {
 	    return coordinates;
 	}
 	
+	
+	public TimeLapse getTimeLapseForUpdate() {
+		return timeLapseForUpdate;
+	}
+
 	public void addPolyLine(PolylineOptions options){
 		googleMap.addPolyline(options);
 	}

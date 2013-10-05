@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.correportuvida.controllers.Controller;
 import com.correportuvida.controllers.RunningController;
 import com.correportuvida.model.base.Distance;
 import com.correportuvida.model.base.TimeLapse;
@@ -88,7 +87,7 @@ public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange 
 		_phaseTimeKeeper = new TimeKeeper(new TimeKeeperPhaseChangeNotice(this), phaseLapse);
 		
 		//TODO: arreglar el timeLapse para que tome segundos.
-		TimeLapse positionVelocityLapse = new TimeLapse(2000, TimeLapse.SECONDS); //TODO: Set depending on memory consumption
+		TimeLapse positionVelocityLapse = new TimeLapse(2000, TimeLapse.MILISECONDS); //TODO: Set depending on memory consumption
 		navigator.start(new TimeKeeperPositionVelocityNotice(this), positionVelocityLapse);
 		
 		_navigatorState = new ActiveNavigator(navigator);

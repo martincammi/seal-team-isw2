@@ -2,7 +2,7 @@ package com.correportuvida.model.base;
 
 public class Distance {
 	
-	public static final String METERS = "meters";
+	public static final String METERS = "m";
 	public static final String KILOMETERS = "kilometers";
 
 	public static final Distance TwoKM = new Distance(2,KILOMETERS);
