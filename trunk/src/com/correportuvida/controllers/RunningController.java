@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.correportuvida.R;
+import com.correportuvida.activities.PlansListActivity;
 import com.correportuvida.activities.TrainingListActivity;
 import com.correportuvida.adapters.PhaseAdapter;
 import com.correportuvida.adapters.VelocityAdapter;
@@ -30,10 +31,12 @@ public  class RunningController extends Controller {
 		try {
 			addButtonCancelBehaviour();
 			
-			Training training = (Training) getActivity().getIntent().getSerializableExtra(TrainingListActivity.TRAINING_NAME);
+			String planName = (String) getActivity().getIntent().getSerializableExtra(PlansListActivity.PLAN_NAME);
+			String trainingName = (String) getActivity().getIntent().getSerializableExtra(TrainingListActivity.TRAINING_NAME);
 			
 			Trainer trainer = Trainer.getInstance();
 			trainer.setController(this);
+			Training training = trainer.getTraining(planName, trainingName);
 			
 			Navigator navigator;
 			navigator = getNavigator();
