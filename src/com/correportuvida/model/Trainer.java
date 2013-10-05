@@ -7,6 +7,7 @@ import java.util.Map;
 
 import com.correportuvida.controllers.Controller;
 import com.correportuvida.controllers.RunningController;
+import com.correportuvida.model.base.Distance;
 import com.correportuvida.model.base.TimeLapse;
 import com.correportuvida.model.base.Velocity;
 import com.correportuvida.model.interfaces.NotifyPhaseChange;
@@ -114,10 +115,14 @@ public class Trainer implements NotifyPhaseChange, NotifyPositionVelocityChange 
 	
 	public Velocity getCurrentVelocity()
 	{
-		return _navigatorState.getCurrentSpeed();
+		return _navigatorState.getCurrentVelocity();
 	}
 
 	public Phase getCurrentPhase() {
 		return Phase.getDummyPhase();
+	}
+
+	public Distance getCurrentDistance() {
+		return _navigatorState.getDistanceTraveled();
 	}
 }

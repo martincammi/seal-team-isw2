@@ -92,7 +92,7 @@ public class GoogleMapsService {
 	}
 
 	/**
-	 * Updates the current location every 20 seconds.
+	 * Updates the current location every TimeLapse seconds.
 	 */
 	public void startProcessingLocation(final Reportable reportable, TimeLapse timeLapse){
 	

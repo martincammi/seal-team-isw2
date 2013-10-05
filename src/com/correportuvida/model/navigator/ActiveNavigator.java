@@ -31,13 +31,12 @@ public class ActiveNavigator extends NavigatorState {
 	}
 
 	@Override
-	public Velocity getCurrentSpeed() {
+	public Velocity getCurrentVelocity() {
 		return _navigator.getVelocity();
 	}
 
 	@Override
 	public Distance getDistanceTraveled() {
-		// TODO Auto-generated method stub
-		return null;
+		return _navigator.getDistanceTraveled();
 	}
 }

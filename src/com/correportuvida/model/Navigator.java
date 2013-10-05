@@ -27,13 +27,12 @@ public class Navigator {
 	private GoogleMapsService _googleMapsService;
 	private Marker currentMarker;
 	private Location currentLocation;
-	private float distance = 0;
+	private float _distance;
 	private Activity _activity;
 	
 	public Navigator(GoogleMapsService googleMapsService, Activity activity) throws Exception{
 		_googleMapsService = googleMapsService;
 		_activity = activity;
-		
 		if(!_googleMapsService.servicesConnected()){
 			  throw new Exception("The Google map is not correclty initialized");
 		}
@@ -93,7 +92,7 @@ public class Navigator {
 		          _googleMapsService.moveToPositionInGoogleMap(currentMarker);
 		          
 		  		if (currentLocation != null){
-		  			distance += location.distanceTo(currentLocation);
+		  			_distance += location.distanceTo(currentLocation);
 		  		}
 		  		currentLocation = location;
   		
@@ -128,5 +127,9 @@ public class Navigator {
 	
 	private BitmapDescriptor getCorrePorTuVidaIcon() {
 		return BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher);
+	}
+
+	public Distance getDistanceTraveled() {
+		return new Distance(_distance, Distance.METERS);
 	}
 }

@@ -10,11 +10,13 @@ import android.widget.Toast;
 import com.correportuvida.R;
 import com.correportuvida.activities.PlansListActivity;
 import com.correportuvida.activities.TrainingListActivity;
+import com.correportuvida.adapters.DistanceAdapter;
 import com.correportuvida.adapters.PhaseAdapter;
 import com.correportuvida.adapters.VelocityAdapter;
 import com.correportuvida.model.Navigator;
 import com.correportuvida.model.Phase;
 import com.correportuvida.model.Trainer;
+import com.correportuvida.model.base.Distance;
 import com.correportuvida.model.base.Velocity;
 import com.correportuvida.model.training.Training;
 import com.correportuvida.services.GoogleMapsService;
@@ -65,6 +67,17 @@ public  class RunningController extends Controller {
 	}
 	
 	public void notifyPositionVelocityChanged(Trainer trainer) {
+		updateVelocity(trainer);
+		updateDistanceTraveled(trainer);
+	}
+
+	private void updateDistanceTraveled(Trainer trainer) {
+		Distance currentDistance = trainer.getCurrentDistance();
+		TextView distanceValue = (TextView) getActivity().findViewById(R.id.valueDistanceTraveled);
+		distanceValue.setText((new DistanceAdapter(currentDistance)).toString());
+	}
+
+	private void updateVelocity(Trainer trainer) {
 		Velocity velocity = trainer.getCurrentVelocity();
 		TextView currentVelocity = (TextView) getActivity().findViewById(R.id.valueVelocidadActual);
 		currentVelocity.setText((new VelocityAdapter(velocity)).toString());
@@ -75,7 +88,4 @@ public  class RunningController extends Controller {
 		TextView phaseValue = (TextView) getActivity().findViewById(R.id.valueFase);
 		phaseValue.setText((new PhaseAdapter(currentPhase)).toString());
 	}
-
-	
-
 }
